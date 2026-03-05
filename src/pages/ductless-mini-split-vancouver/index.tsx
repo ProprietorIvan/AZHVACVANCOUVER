@@ -12,7 +12,7 @@ const config: ServiceLandingConfig = {
   heroTrustBadge: "Up to $16,000 Rebates | Licensed Installation | 100% Satisfaction",
   serviceType: "Ductless Mini-Split",
   breadcrumbName: "Ductless Mini-Split Vancouver",
-  heroImage: "/photos/homepage/heating.png",
+  heroImage: "/photos/homepage/Duct-lessminisplit.png",
   introContent: "Ductless mini-splits deliver efficient heating and cooling without ductwork—ideal for Vancouver homes with no ducts, additions, or room-by-room control. Each indoor unit connects to an outdoor condenser. AZ Air Conditioning and Heating installs Daikin, Mitsubishi, Fujitsu, and other top brands. CleanBC and FortisBC rebates can save you thousands. We size systems properly for Vancouver's climate and handle the rebate paperwork.",
   valueProps: [
     { title: "No Ductwork Needed", description: "Perfect for older homes, additions, condos, or garages. Each zone has its own thermostat. No expensive duct installation." },

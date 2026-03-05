@@ -12,7 +12,7 @@ const config: ServiceLandingConfig = {
   heroTrustBadge: "2-Hour Response | Licensed & Insured | 100% Satisfaction Guaranteed",
   serviceType: "Boiler Service",
   breadcrumbName: "Boiler Service Vancouver",
-  heroImage: "/photos/homepage/heating.png",
+  heroImage: "/photos/homepage/boilerservice.png",
   introContent: "Boilers power radiant floor heating, baseboards, and radiators in many Vancouver homes. When your boiler fails or you need maintenance, AZ Air Conditioning and Heating provides expert hydronic heating service. We repair and install gas and oil boilers for residential and commercial properties. Our technicians understand circulator pumps, expansion tanks, and zone valves. 24/7 emergency service available—no heat in winter is an emergency we take seriously.",
   valueProps: [
     { title: "Hydronic Heating Experts", description: "We specialize in boiler systems—radiant floor, baseboard, and radiator. Proper diagnosis and repair of circulators, zone valves, and expansion tanks." },

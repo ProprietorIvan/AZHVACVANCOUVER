@@ -34,13 +34,13 @@ const Services = () => {
     {
       title: "Ductless Mini-Split Vancouver",
       description: "Ductless mini-split installation. No ductwork needed. Rebates available.",
-      image: "/photos/homepage/2.jpg",
+      image: "/photos/homepage/Duct-lessminisplit.png",
       link: "/ductless-mini-split-vancouver",
     },
     {
       title: "Boiler Service Vancouver",
       description: "Boiler repair and installation. Hydronic heating systems.",
-      image: "/photos/homepage/heating.png",
+      image: "/photos/homepage/boilerservice.png",
       link: "/boiler-service-vancouver",
     },
     {
