@@ -36,7 +36,7 @@ export const generateLocalBusinessSchema = (gmbProfile: GMBProfile) => {
     "@type": "LocalBusiness",
     name: gmbProfile.businessName,
     image: "https://azhvac.ca/photos/homepage/AirConditioning.jpg",
-    url: "https://azhvac.ca/hvac",
+    url: "https://azhvac.ca",
     telephone: gmbProfile.phone || "+17787705721",
     address: {
       "@type": "PostalAddress",

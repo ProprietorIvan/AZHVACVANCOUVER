@@ -5,12 +5,25 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
-  <!-- Main Landing Page (Home redirects here) -->
+  <!-- Homepage -->
+  <url>
+    <loc>https://azhvac.ca/</loc>
+    <lastmod>2025-03-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://azhvac.ca/photos/homepage/slider.png</image:loc>
+      <image:title>Vancouver HVAC Services - Year-Round Comfort</image:title>
+      <image:caption>Professional HVAC services in Vancouver</image:caption>
+    </image:image>
+  </url>
+
+  <!-- AC Repair & Installation Landing -->
   <url>
     <loc>https://azhvac.ca/hvac</loc>
     <lastmod>2025-03-05</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <priority>0.95</priority>
     <image:image>
       <image:loc>https://azhvac.ca/photos/homepage/aircondtioning.png</image:loc>
       <image:title>Vancouver HVAC Services - AC Repair &amp; Installation</image:title>

@@ -96,7 +96,7 @@ const Navigation = ({
         { text: "Contact", url: "/contact" },
       ]
     : [
-        { text: "Home", url: "/hvac" },
+        { text: "Home", url: "/" },
         { text: "Services", url: "/services" },
         { text: "HVAC", url: "/hvac" },
         { text: "Why Choose Us", url: "/why-chose-us" },
@@ -115,7 +115,7 @@ const Navigation = ({
       {/* Mobile Navigation */}
       <div className="lg:hidden">
         <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100">
-          <Link href="/hvac" className="flex items-center">
+          <Link href="/" className="flex items-center">
             <div className="relative h-12 w-36">
               <Image
                 src="/logo.png"
@@ -186,7 +186,7 @@ const Navigation = ({
       {/* Desktop Navigation */}
       <div className="hidden lg:block max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-24">
-          <Link href="/hvac" className="flex items-center">
+          <Link href="/" className="flex items-center">
             <div className="relative h-16 w-48">
               <Image
                 src="/logo.png"

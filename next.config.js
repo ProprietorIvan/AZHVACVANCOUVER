@@ -12,11 +12,6 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/',
-        destination: '/hvac',
-        permanent: false,
-      },
-      {
         source: '/ac-repair-vancouver',
         destination: '/hvac',
         permanent: true,
