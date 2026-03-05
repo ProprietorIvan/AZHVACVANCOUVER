@@ -1,0 +1,48 @@
+{
+  "name": "handyman",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "deploy": "vercel",
+    "deploy:prod": "vercel --prod"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^1.4.1",
+    "formidable": "^3.5.2",
+    "lucide-react": "^0.460.0",
+    "monday-sdk-js": "^0.5.6",
+    "mongodb": "^6.12.0",
+    "next": "^16.0.8",
+    "nodemailer": "^7.0.10",
+    "openai": "^4.72.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/formidable": "^3.4.5",
+    "@types/node": "^20",
+    "@types/nodemailer": "^6.4.17",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10",
+    "eslint": "^9",
+    "eslint-config-next": "^15.5.6",
+    "postcss": "^8",
+    "tailwindcss": "^3",
+    "typescript": "^5"
+  },
+  "overrides": {
+    "semver": "^7.7.2",
+    "node-fetch": "^2.7.0",
+    "path-to-regexp": "^6.2.3",
+    "undici": ">=6.23.0",
+    "esbuild": "^0.25.12",
+    "tar": ">=7.5.7",
+    "debug": ">=4.3.1"
+  }
+}

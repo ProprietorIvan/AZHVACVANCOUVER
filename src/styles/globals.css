@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.mask-stripes {
+  -webkit-mask-image: url('https://i.imgur.com/xYBtnf5.png');
+  -webkit-mask-position: center center;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-image: url('https://i.imgur.com/xYBtnf5.png');
+  mask-position: center center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+}
