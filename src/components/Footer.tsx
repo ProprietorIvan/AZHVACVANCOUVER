@@ -43,8 +43,8 @@ const Footer = () => {
         "Saturday",
         "Sunday",
       ],
-      opens: "08:00",
-      closes: "18:00",
+      opens: "00:00",
+      closes: "23:59",
     },
   };
 
@@ -89,9 +89,7 @@ const Footer = () => {
                 aria-hidden="true"
               ></div>
               <p className="text-gray-300">
-                Mon–Sun: 8 AM – 6 PM
-                <br />
-                24/7 Emergency Service Available
+                24/7
               </p>
             </section>
 

@@ -82,9 +82,9 @@ const ContactUs = () => {
     {
       icon: Clock,
       title: "Hours",
-      content: "Mon–Sun: 8 AM – 6 PM",
+      content: "24/7",
       link: null,
-      desc: "24/7 emergency available",
+      desc: "Always available",
     },
     {
       icon: MapPin,

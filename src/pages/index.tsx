@@ -122,7 +122,7 @@ const Home: NextPage = () => {
     },
     areaServed: "Vancouver Metropolitan Area",
     priceRange: "$$",
-    openingHours: "Mo-Su 08:00-18:00",
+    openingHours: "Mo-Su 00:00-23:59",
     telephone: "+17787705721",
   };
 

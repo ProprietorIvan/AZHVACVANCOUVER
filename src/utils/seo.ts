@@ -101,8 +101,8 @@ export const generateLocalBusinessSchema = (gmbProfile: GMBProfile) => {
           "Saturday",
           "Sunday",
         ],
-        opens: "08:00",
-        closes: "18:00",
+        opens: "00:00",
+        closes: "23:59",
       },
     ],
     hasOfferCatalog: {

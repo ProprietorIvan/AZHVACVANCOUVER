@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Zoom out whole site by 10% */
+/* Site zoom: 95% (slightly zoomed out from default) */
 html {
-  font-size: 90%;
+  font-size: 95%;
 }
 
 .mask-stripes {
