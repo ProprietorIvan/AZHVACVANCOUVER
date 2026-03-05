@@ -13,6 +13,7 @@ interface Service {
   image: string;
   orientation: "left" | "right";
   url: string;
+  compact?: boolean;
 }
 
 interface ServiceCardProps {
@@ -57,6 +58,7 @@ const ComparisonSection = () => {
       image: "/photos/homepage/commericial.jpg",
       orientation: "left",
       url: "/commercial-hvac-vancouver",
+      compact: true,
     },
   ];
 
@@ -80,14 +82,14 @@ const ComparisonSection = () => {
 
   const ServiceCard: React.FC<ServiceCardProps> = ({ service, index }) => (
     <article
-      className={`flex flex-col md:flex-row items-center w-full gap-8 py-16 ${
-        service.orientation === "left" ? "md:flex-row-reverse" : ""
-      }`}
+      className={`flex flex-col md:flex-row items-center w-full gap-8 ${
+        service.compact ? "py-8 gap-6" : "py-16"
+      } ${service.orientation === "left" ? "md:flex-row-reverse" : ""}`}
     >
       <div className="w-full md:w-1/2 relative group overflow-hidden">
         <a href={service.url} className="block cursor-pointer">
           <div className="relative overflow-hidden rounded-xl shadow-2xl transform transition-transform duration-500 hover:-translate-y-2">
-            <div className="relative w-full h-[400px] md:h-[600px]">
+            <div className={`relative w-full ${service.compact ? "h-[240px] md:h-[320px]" : "h-[400px] md:h-[600px]"}`}>
               <Image
                 src={service.image}
                 alt={`${service.title} - Professional HVAC services in Vancouver`}
@@ -100,15 +102,15 @@ const ComparisonSection = () => {
               />
             </div>
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/15 group-hover:to-black/25 transition-all duration-300" />
-            <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+            <div className={`absolute bottom-0 left-0 right-0 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 ${service.compact ? "p-4" : "p-6"}`}>
               <h3
-                className="text-2xl font-bold mb-2 drop-shadow-md"
+                className={`font-bold mb-2 drop-shadow-md ${service.compact ? "text-xl" : "text-2xl"}`}
                 style={{ textShadow: "1px 1px 3px rgba(0,0,0,0.5)" }}
               >
                 {service.title}
               </h3>
               <p
-                className="text-sm opacity-90 drop-shadow-md"
+                className={`opacity-90 drop-shadow-md ${service.compact ? "text-xs" : "text-sm"}`}
                 style={{ textShadow: "1px 1px 2px rgba(0,0,0,0.5)" }}
               >
                 Learn more about our {service.title.toLowerCase()} in Vancouver
@@ -119,10 +121,10 @@ const ComparisonSection = () => {
       </div>
 
       <div className="w-full md:w-1/2 px-6">
-        <h2 className="text-4xl font-bold mb-6 tracking-wide">
+        <h2 className={`font-bold tracking-wide ${service.compact ? "text-2xl md:text-3xl mb-4" : "text-4xl mb-6"}`}>
           {service.title}
         </h2>
-        <p className="text-lg text-gray-700 mb-8 leading-relaxed">
+        <p className={`text-gray-700 leading-relaxed ${service.compact ? "text-base mb-4" : "text-lg mb-8"}`}>
           {service.description}
         </p>
         <a
@@ -223,7 +225,7 @@ const ComparisonSection = () => {
 
           <div className="flex justify-center">
             <button
-              onClick={() => copyToClipboard("info@azhvac.ca", false)}
+              onClick={() => copyToClipboard("office@azhvac.ca", false)}
               className={`${
                 copiedEmail
                   ? "bg-green-400 scale-95"
@@ -237,7 +239,7 @@ const ComparisonSection = () => {
                   <Check className="w-5 h-5 animate-in fade-in duration-200" />
                 </>
               ) : (
-                "info@azhvac.ca"
+                "office@azhvac.ca"
               )}
             </button>
           </div>

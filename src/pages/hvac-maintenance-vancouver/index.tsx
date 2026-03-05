@@ -12,7 +12,7 @@ const config: ServiceLandingConfig = {
   heroTrustBadge: "Annual Tune-Ups | Priority Emergency | 100% Satisfaction",
   serviceType: "HVAC Maintenance",
   breadcrumbName: "HVAC Maintenance Vancouver",
-  heroImage: "/photos/homepage/aircondtioning.png",
+  heroImage: "/photos/homepage/hvacmaintance.png",
   introContent: "Annual HVAC maintenance prevents breakdowns, improves efficiency, and extends equipment life. AZ Air Conditioning and Heating offers tune-ups for furnaces, air conditioners, and heat pumps. Schedule AC maintenance in spring (April-May) before the first heat wave. Schedule furnace maintenance in fall (September-October) before heating season. Our maintenance plans include priority emergency response and discounts on repairs.",
   valueProps: [
     { title: "Prevent Breakdowns", description: "Catch small issues before they become expensive repairs. Dirty coils, worn parts, low refrigerant—we find and fix them during tune-ups." },

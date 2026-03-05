@@ -75,8 +75,8 @@ const ContactUs = () => {
     {
       icon: Mail,
       title: "Email",
-      content: "info@azhvac.ca",
-      link: "mailto:info@azhvac.ca",
+      content: "office@azhvac.ca",
+      link: "mailto:office@azhvac.ca",
       desc: "2-hour reply guaranteed",
     },
     {
@@ -106,7 +106,7 @@ const ContactUs = () => {
         <Navigation />
 
         {/* Hero */}
-        <section className="relative h-[50vh] min-h-[320px] flex items-center">
+        <section className="relative h-[50vh] min-h-[320px] flex items-center pt-24">
           <div className="absolute inset-0">
             <Image
               src="/photos/homepage/slider.png"

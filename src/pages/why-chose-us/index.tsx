@@ -1,4 +1,5 @@
 import FAQ from "@/components/FAQ";
+import RelatedServices from "@/components/RelatedServices";
 import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
 import Testemonials from "@/components/Testemonials";
@@ -77,7 +78,7 @@ const WhyChooseUs = () => {
         <Navigation />
 
         {/* Hero */}
-        <section className="relative h-[55vh] min-h-[380px] flex items-center">
+        <section className="relative h-[55vh] min-h-[380px] flex items-center pt-24">
           <div className="absolute inset-0">
             <Image
               src="/photos/homepage/heating.png"
@@ -181,6 +182,9 @@ const WhyChooseUs = () => {
         </section>
 
         <Testemonials />
+        <div className="bg-gray-50">
+          <RelatedServices currentPage="why-chose-us" />
+        </div>
         <FAQ />
         <Footer />
       </div>

@@ -77,7 +77,7 @@ const Navigation = ({
 
   const phoneNumber = "(778) 770-5721";
   const phoneNumberClean = "7787705721";
-  const email = "info@azhvac.ca";
+  const email = "office@azhvac.ca";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -115,13 +115,13 @@ const Navigation = ({
       {/* Mobile Navigation */}
       <div className="lg:hidden">
         <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100">
-          <Link href="/" className="flex items-center">
-            <div className="relative h-12 w-36">
+          <Link href="/" className="flex items-center -ml-4">
+            <div className="relative h-[58px] w-[173px]">
               <Image
                 src="/logo.png"
                 alt="AZ Air Conditioning and Heating - Vancouver HVAC"
                 fill
-                sizes="144px"
+                sizes="173px"
                 className="object-contain"
                 priority
               />
@@ -186,13 +186,13 @@ const Navigation = ({
       {/* Desktop Navigation */}
       <div className="hidden lg:block max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-24">
-          <Link href="/" className="flex items-center">
-            <div className="relative h-16 w-48">
+          <Link href="/" className="flex items-center -ml-8">
+            <div className="relative h-[77px] w-[230px]">
               <Image
                 src="/logo.png"
                 alt="AZ Air Conditioning and Heating - Vancouver HVAC"
                 fill
-                sizes="192px"
+                sizes="230px"
                 className="object-contain"
                 priority
               />

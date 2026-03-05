@@ -12,7 +12,7 @@ const config: ServiceLandingConfig = {
   heroTrustBadge: "Up to $16,000 Rebates | Licensed & Insured | 100% Satisfaction",
   serviceType: "Heat Pump",
   breadcrumbName: "Heat Pump Vancouver",
-  heroImage: "/photos/homepage/heating.png",
+  heroImage: "/photos/homepage/boiler.png",
   introContent: "Heat pumps are ideal for Vancouver's climate—they provide efficient heating in winter and cooling in summer from one system. BC offers rebates up to $16,000 through CleanBC and FortisBC, making heat pumps an affordable upgrade. AZ Air Conditioning and Heating installs ductless mini-splits, ducted heat pumps, and hybrid systems. We help you maximize rebates and choose the right system for your home.",
   valueProps: [
     { title: "Massive Rebates Available", description: "Up to $16,000 in BC rebates for heat pump installation. We handle the paperwork and ensure you get the maximum rebate you qualify for." },

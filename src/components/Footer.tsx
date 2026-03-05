@@ -1,7 +1,6 @@
 import React from "react";
 import Head from "next/head";
 import Link from "next/link";
-
 const SITE_URL = "https://azhvac.ca";
 const BUSINESS_NAME = "AZ Air Conditioning and Heating";
 
@@ -24,7 +23,7 @@ const Footer = () => {
       "@type": "ContactPoint",
       telephone: "+17787705721",
       contactType: "customer service",
-      email: "info@azhvac.ca",
+      email: "office@azhvac.ca",
       availableLanguage: ["English"],
       areaServed: "CA-BC",
     },
@@ -118,10 +117,10 @@ const Footer = () => {
                 <p>
                   Email:{" "}
                   <a
-                    href="mailto:info@azhvac.ca"
+                    href="mailto:office@azhvac.ca"
                     className="hover:text-white transition-colors"
                   >
-                    info@azhvac.ca
+                    office@azhvac.ca
                   </a>
                 </p>
               </address>

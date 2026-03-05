@@ -136,8 +136,8 @@ const TermsAndConditions = () => {
                 <p>Felicita Group Company</p>
                 <p>922 Homer St, Vancouver, BC V6B 1T7</p>
                 <div className="flex justify-center gap-8 mt-4 flex-wrap">
-                  <a href="mailto:info@azhvac.ca" className="text-yellow-400 hover:text-yellow-300">
-                    info@azhvac.ca
+                  <a href="mailto:office@azhvac.ca" className="text-yellow-400 hover:text-yellow-300">
+                    office@azhvac.ca
                   </a>
                   <a href="tel:+17787705721" className="text-yellow-400 hover:text-yellow-300">
                     (778) 770-5721

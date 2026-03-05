@@ -12,7 +12,7 @@ const config: ServiceLandingConfig = {
   heroTrustBadge: "Professional Equipment | Same-Day Service | 100% Satisfaction",
   serviceType: "Duct Cleaning",
   breadcrumbName: "Duct Cleaning Vancouver",
-  heroImage: "/photos/homepage/aircondtioning.png",
+  heroImage: "/photos/homepage/ductcleaning.png",
   introContent: "Your ductwork circulates air throughout your home—and over time, it accumulates dust, pollen, mold spores, and other contaminants. Professional duct cleaning removes these pollutants, improving indoor air quality and HVAC efficiency. AZ Air Conditioning and Heating uses industry-standard equipment to thoroughly clean your duct system. Ideal after renovations, for allergy sufferers, or as part of regular home maintenance.",
   valueProps: [
     { title: "Improved Air Quality", description: "Remove built-up dust, allergens, and contaminants. Breathe easier—especially important for allergy sufferers, asthma, and families with young children." },

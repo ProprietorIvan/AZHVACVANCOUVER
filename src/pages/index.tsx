@@ -4,10 +4,11 @@ import ComparisonSection from "@/components/ComparisonSection";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
+import RelatedServices from "@/components/RelatedServices";
 import StepsSection from "@/components/StepsSection";
 import Testemonials from "@/components/Testemonials";
 import DomainRedirectHandler from "@/components/DomainRedirectHandler";
-import { Star, Check } from "lucide-react";
+import { Star, Check, ChevronDown } from "lucide-react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import Image from "next/image";
@@ -274,12 +275,20 @@ const Home: NextPage = () => {
               >
                 Vancouver&apos;s #1 HVAC contractor with 100+ 5-star reviews
               </p>
-              <button
-                onClick={() => window.open("/services", "_current")}
-                className="bg-white text-black px-8 py-4 rounded-lg text-lg font-medium mb-8 hover:bg-yellow-400 transition-colors duration-300"
-              >
-                Get Free Estimate
-              </button>
+              <div className="flex flex-wrap items-center gap-4 mb-8">
+                <button
+                  onClick={() => router.push("/#contactform")}
+                  className="bg-white text-black px-8 py-4 rounded-xl text-lg font-medium hover:bg-yellow-400 transition-colors duration-300 shadow-lg"
+                >
+                  Get Free Estimate
+                </button>
+                <button
+                  onClick={() => document.getElementById("our-services")?.scrollIntoView({ behavior: "smooth" })}
+                  className="flex items-center gap-2 bg-white/95 backdrop-blur-sm text-gray-900 px-6 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl hover:bg-yellow-400 transition-all duration-300 border border-gray-100"
+                >
+                  Explore Our Services <ChevronDown className="w-5 h-5" />
+                </button>
+              </div>
               <div className="flex items-center gap-3">
                 <div className="flex drop-shadow-md">
                   {[...Array(5)].map((_, i) => (
@@ -432,6 +441,10 @@ const Home: NextPage = () => {
               </div>
             </div>
           </section>
+
+          <div className="bg-gray-50">
+            <RelatedServices id="our-services" />
+          </div>
 
           {/* CTA Section */}
           <section className="bg-black text-white py-24">

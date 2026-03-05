@@ -53,7 +53,7 @@ const Contact = () => {
           </a>
 
           <button
-            onClick={() => copyToClipboard("info@azhvac.ca", false)}
+            onClick={() => copyToClipboard("office@azhvac.ca", false)}
             className={`flex items-center justify-center px-6 sm:px-8 py-4 rounded-full transition-all duration-200 group ${
               copiedEmail
                 ? "bg-green-600 text-white scale-95"
@@ -66,7 +66,7 @@ const Contact = () => {
               <Mail className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
             )}
             <span className="hidden sm:inline">
-              {copiedEmail ? "Copied!" : "info@azhvac.ca"}
+              {copiedEmail ? "Copied!" : "office@azhvac.ca"}
             </span>
             <span className="sm:hidden">
               {copiedEmail ? "Copied!" : "Email Us"}

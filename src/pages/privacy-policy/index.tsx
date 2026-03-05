@@ -98,7 +98,7 @@ const PrivacyPolicy = () => {
                 <p><strong>AZ Air Conditioning and Heating</strong></p>
                 <p>Felicita Group Company</p>
                 <p>922 Homer St, Vancouver, BC V6B 1T7</p>
-                <p>Email: <a href="mailto:info@azhvac.ca" className="text-black hover:text-gray-600">info@azhvac.ca</a></p>
+                <p>Email: <a href="mailto:office@azhvac.ca" className="text-black hover:text-gray-600">office@azhvac.ca</a></p>
                 <p>Phone: <a href="tel:+17787705721" className="text-black hover:text-gray-600">(778) 770-5721</a></p>
               </div>
             </div>

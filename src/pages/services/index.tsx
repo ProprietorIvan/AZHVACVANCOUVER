@@ -28,7 +28,7 @@ const Services = () => {
     {
       title: "Heat Pump Vancouver",
       description: "Heat pump installation with rebate assistance. Energy-efficient heating & cooling.",
-      image: "/photos/homepage/2.jpg",
+      image: "/photos/homepage/boiler.png",
       link: "/heat-pump-vancouver",
     },
     {
@@ -46,7 +46,7 @@ const Services = () => {
     {
       title: "Duct Cleaning Vancouver",
       description: "Professional duct cleaning. Improve air quality.",
-      image: "/photos/homepage/aircondtioning.png",
+      image: "/photos/homepage/ductcleaning.png",
       link: "/duct-cleaning-vancouver",
     },
     {
@@ -58,7 +58,7 @@ const Services = () => {
     {
       title: "HVAC Maintenance Vancouver",
       description: "Preventive maintenance plans. Annual tune-ups.",
-      image: "/photos/homepage/aircondtioning.png",
+      image: "/photos/homepage/hvacmaintance.png",
       link: "/hvac-maintenance-vancouver",
     },
     {

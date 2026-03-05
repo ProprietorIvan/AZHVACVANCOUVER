@@ -7,6 +7,7 @@ import Image from "next/image";
 import { CheckCircle2, ArrowRight, Phone, Star } from "lucide-react";
 import StickyCTA from "@/components/StickyCTA";
 import CTAButton from "@/components/CTAButton";
+import RelatedServices from "@/components/RelatedServices";
 import { getGMBProfile } from "@/data/gmb-profiles";
 import ServiceTestimonials from "@/components/ServiceTestimonials";
 import {
@@ -370,6 +371,10 @@ const ServiceLandingPage = ({ config }: { config: ServiceLandingConfig }) => {
         {gmbProfile && (
           <ServiceTestimonials reviews={testimonials} gmbProfile={gmbProfile} serviceName={config.serviceType} reviewCount={100} />
         )}
+
+        <div className="bg-gray-50">
+          <RelatedServices currentPage={config.slug} />
+        </div>
 
         {/* FAQ */}
         <section className="py-20 bg-white">
