@@ -52,7 +52,6 @@ const config: ServiceLandingConfig = {
     { value: "24/7", label: "LOWER MAINLAND SERVICE" },
     { value: "100%", label: "SATISFACTION GUARANTEE" },
   ],
-  serviceAreas: ["Downtown Vancouver", "West Vancouver", "North Vancouver", "Burnaby", "Richmond", "Surrey", "Coquitlam", "New Westminster", "Kitsilano", "East Vancouver", "Delta", "Langley"],
   faqs: [
     {
       question: "How much does AC repair cost in Vancouver?",

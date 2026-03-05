@@ -39,28 +39,11 @@ export interface ServiceLandingConfig {
   useSimpleProcess?: boolean;
   /** Stats grid */
   stats?: { value: string; label: string }[];
-  /** Service area neighborhoods */
-  serviceAreas?: string[];
   /** Rich intro content paragraph */
   introContent?: string;
   /** Show emergency banner */
   showEmergencyBanner?: boolean;
 }
-
-const DEFAULT_SERVICE_AREAS = [
-  "Downtown Vancouver",
-  "West Vancouver",
-  "North Vancouver",
-  "Burnaby",
-  "Richmond",
-  "Surrey",
-  "Coquitlam",
-  "New Westminster",
-  "Port Coquitlam",
-  "Delta",
-  "Langley",
-  "White Rock",
-];
 
 const ServiceLandingPage = ({ config }: { config: ServiceLandingConfig }) => {
   const [showSuccess, setShowSuccess] = useState(false);
@@ -156,8 +139,6 @@ const ServiceLandingPage = ({ config }: { config: ServiceLandingConfig }) => {
     { value: "24/7", label: "LOWER MAINLAND SERVICE" },
     { value: "100%", label: "SATISFACTION GUARANTEE" },
   ];
-
-  const serviceAreas = config.serviceAreas ?? DEFAULT_SERVICE_AREAS;
 
   return (
     <>
@@ -342,28 +323,6 @@ const ServiceLandingPage = ({ config }: { config: ServiceLandingConfig }) => {
                   <div className="text-sm text-gray-300 uppercase tracking-wider">{s.label}</div>
                 </div>
               ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Service Areas */}
-        <section className="py-20 bg-white">
-          <div className="max-w-6xl mx-auto px-4">
-            <h2 className="text-4xl font-bold text-center mb-4">{config.serviceType} Throughout Vancouver</h2>
-            <p className="text-lg text-gray-600 text-center max-w-2xl mx-auto mb-12">
-              We provide {config.serviceType.toLowerCase()} services throughout Vancouver and surrounding areas
-            </p>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {serviceAreas.map((area, i) => (
-                <div key={i} className="bg-gray-50 px-4 py-3 rounded-lg text-center font-medium text-gray-800">
-                  {area} {config.serviceType}
-                </div>
-              ))}
-            </div>
-            <div className="text-center mt-8">
-              <a href="/services" className="inline-flex items-center gap-2 text-gray-900 font-semibold hover:underline">
-                View All Services <ArrowRight className="w-4 h-4" />
-              </a>
             </div>
           </div>
         </section>

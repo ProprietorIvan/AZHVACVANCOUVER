@@ -50,7 +50,6 @@ const config: ServiceLandingConfig = {
     { value: "24/7", label: "COMMERCIAL SERVICE" },
     { value: "100%", label: "SATISFACTION GUARANTEE" },
   ],
-  serviceAreas: ["Downtown Vancouver", "Burnaby", "Richmond", "Surrey", "Coquitlam", "New Westminster", "North Vancouver", "West Vancouver", "Delta", "Langley"],
   faqs: [
     { question: "Do you offer commercial HVAC maintenance contracts?", answer: "Yes. We offer customized maintenance plans to keep your commercial HVAC systems running efficiently, prevent breakdowns, and maintain manufacturer warranties. Plans include scheduled visits, priority emergency response, and documentation." },
     { question: "What types of commercial buildings do you serve?", answer: "We serve offices, retail stores, restaurants, hotels, medical facilities, warehouses, and industrial buildings throughout Vancouver and the Lower Mainland. Our team has experience with all commercial HVAC system types." },
