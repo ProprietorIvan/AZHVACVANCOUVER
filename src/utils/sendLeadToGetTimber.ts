@@ -35,9 +35,9 @@ export async function sendLeadToGetTimber(leadData: {
       propertyType: leadData.propertyType || "Residential",
       projectSize: leadData.projectSize || leadData.squareFootage || "",
       squareFootage: leadData.projectSize || leadData.squareFootage || "",
-      serviceType: leadData.serviceType || "Handyman Services",
+      serviceType: leadData.serviceType || "HVAC Services",
       urgency: leadData.urgency || "Not specified",
-      leadSource: leadData.leadSource || "AZ Handyman Website",
+      leadSource: leadData.leadSource || "AZ Air Conditioning Website",
       preferredContactMethod: "Email",
     };
 

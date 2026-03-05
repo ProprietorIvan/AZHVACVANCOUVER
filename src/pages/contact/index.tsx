@@ -9,7 +9,7 @@ const ContactUs = () => {
     name: "",
     email: "",
     phone: "",
-    message: ""
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
@@ -21,7 +21,6 @@ const ContactUs = () => {
     let emailSent = false;
     let leadSent = false;
 
-    // Try to send email first (but don't block on failure)
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
@@ -33,69 +32,56 @@ const ContactUs = () => {
 
       if (response.ok) {
         emailSent = true;
-        console.log("✅ Email sent successfully");
-      } else {
-        const errorData = await response.json().catch(() => ({ error: "Unknown error" }));
-        console.error("❌ Email failed:", errorData);
       }
     } catch (error) {
-      console.error("❌ Error sending email:", error);
-      // Continue anyway - we still want to send the lead
+      console.error("Error sending email:", error);
     }
 
-    // ALWAYS try to send lead to Get Timber, even if email failed
     try {
-      console.log("📤 Sending lead to Get Timber...");
       const leadResult = await sendLeadToGetTimber({
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
-        address: "", // Contact form doesn't have address
+        address: "",
         message: formData.message,
-        serviceType: "General Inquiry",
-        leadSource: "AZ Handyman Website - Contact Form",
+        serviceType: "HVAC Inquiry",
+        leadSource: "AZ Air Conditioning Website - Contact Form",
       });
 
       if (leadResult.success && leadResult.leadCreated) {
         leadSent = true;
-        console.log("✅ Lead successfully sent to Get Timber:", leadResult.leadId);
-      } else {
-        console.warn("⚠️ Lead not created in Get Timber:", leadResult.errors || "Unknown error");
       }
     } catch (error) {
-      console.error("❌ Error sending lead to Get Timber:", error);
-      // Continue anyway - show success if email was sent
+      console.error("Error sending lead:", error);
     }
 
-    // Show success if either email or lead was sent
     if (emailSent || leadSent) {
-      // Show success message and reset form
       setShowSuccess(true);
       setFormData({
         name: "",
         email: "",
         phone: "",
-        message: ""
+        message: "",
       });
 
-      // Hide success message after 5 seconds
       setTimeout(() => {
         setShowSuccess(false);
       }, 5000);
     } else {
-      // Both failed - show error
       alert(
-        "There was an error submitting your message. Please try again or call us directly at +1 (778) 653-4862."
+        "There was an error submitting your message. Please try again or call us directly at (778) 770-5721."
       );
     }
 
     setIsSubmitting(false);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -103,27 +89,27 @@ const ContactUs = () => {
     {
       icon: Phone,
       title: "Phone",
-      content: "+1 (778) 653-4862",
-      link: "tel:+17786534862"
+      content: "(778) 770-5721",
+      link: "tel:+17787705721",
     },
     {
       icon: Mail,
       title: "Email",
-      content: "info@azhandyman.ca",
-      link: "mailto:info@azhandyman.ca"
+      content: "info@azhvac.ca",
+      link: "mailto:info@azhvac.ca",
     },
     {
       icon: Clock,
-      title: "Operating Hours",
-      content: "Monday – Sunday: 8 AM - 8 PM",
-      link: null
+      title: "Hours",
+      content: "Mon–Sun: 8 AM – 6 PM • 24/7 Emergency",
+      link: null,
     },
     {
       icon: MapPin,
-      title: "Service Area",
-      content: "Greater Vancouver Area",
-      link: null
-    }
+      title: "Address",
+      content: "922 Homer St, Vancouver, BC V6B 1T7",
+      link: "https://maps.google.com/?q=922+Homer+St+Vancouver+BC",
+    },
   ];
 
   return (
@@ -135,15 +121,14 @@ const ContactUs = () => {
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 text-center">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">
-            Ready to Simplify Home Repairs?
+            Ready for Year-Round Comfort?
           </h1>
           <p className="text-xl sm:text-2xl text-white/90 max-w-2xl mx-auto">
-            Get in touch with us today and experience hassle-free home maintenance
+            Get in touch for a free HVAC estimate. 2-hour response guaranteed.
           </p>
         </div>
       </section>
 
-      {/* Contact Information Cards */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 -mt-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {contactInfo.map((item, index) => (
@@ -151,14 +136,18 @@ const ContactUs = () => {
               key={index}
               className="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow"
             >
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 rounded-full mb-4">
-                <item.icon className="w-6 h-6 text-blue-600" />
+              <div className="inline-flex items-center justify-center w-12 h-12 bg-yellow-100 rounded-full mb-4">
+                <item.icon className="w-6 h-6 text-yellow-600" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">{item.title}</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                {item.title}
+              </h3>
               {item.link ? (
                 <a
                   href={item.link}
-                  className="text-blue-600 hover:text-blue-700 transition-colors"
+                  target={item.link.startsWith("http") ? "_blank" : undefined}
+                  rel={item.link.startsWith("http") ? "noopener noreferrer" : undefined}
+                  className="text-yellow-600 hover:text-yellow-700 transition-colors"
                 >
                   {item.content}
                 </a>
@@ -170,7 +159,6 @@ const ContactUs = () => {
         </div>
       </section>
 
-      {/* Contact Form Section */}
       <section className="max-w-3xl mx-auto px-4 sm:px-6 py-16 sm:py-24">
         <div className="bg-white rounded-xl shadow-lg p-8">
           {showSuccess ? (
@@ -185,11 +173,6 @@ const ContactUs = () => {
                 <p className="text-gray-600">
                   Thank you for contacting us. We&apos;ll get back to you shortly.
                 </p>
-                {formData.email && (
-                  <p className="text-gray-500 text-sm">
-                    A confirmation has been sent to {formData.email}
-                  </p>
-                )}
               </div>
               <button
                 onClick={() => setShowSuccess(false)}
@@ -204,75 +187,88 @@ const ContactUs = () => {
                 Send Us a Message
               </h2>
               <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                Full Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                required
-              />
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  required
-                />
-              </div>
-              <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  required
-                />
-              </div>
-            </div>
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                rows={4}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                required
-              />
-            </div>
-            <div className="text-center">
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-black hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                <Send className="w-4 h-4 mr-2" />
-                {isSubmitting ? "Sending..." : "Send Message"}
-              </button>
-            </div>
-          </form>
+                <div>
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
+                    Full Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500"
+                    required
+                  />
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-gray-700 mb-1"
+                    >
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="phone"
+                      className="block text-sm font-medium text-gray-700 mb-1"
+                    >
+                      Phone Number
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500"
+                      required
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    rows={4}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500"
+                    placeholder="Describe your HVAC needs..."
+                    required
+                  />
+                </div>
+                <div className="text-center">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-black hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    <Send className="w-4 h-4 mr-2" />
+                    {isSubmitting ? "Sending..." : "Send Message"}
+                  </button>
+                </div>
+              </form>
             </>
           )}
         </div>

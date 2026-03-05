@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://az-handyman.ca/sitemap.xml
+Sitemap: https://azhvac.ca/sitemap.xml

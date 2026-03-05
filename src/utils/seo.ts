@@ -16,7 +16,7 @@ export const generateMetaTags = (config: SEOConfig) => {
     description,
     keywords,
     canonicalUrl,
-    ogImage = "https://az-handyman.ca/photos/homepage/2.jpg",
+    ogImage = "https://azhvac.ca/photos/homepage/AirConditioning.jpg",
     type = "website",
   } = config;
 
@@ -35,9 +35,9 @@ export const generateLocalBusinessSchema = (gmbProfile: GMBProfile) => {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: gmbProfile.businessName,
-    image: "https://az-handyman.ca/photos/homepage/2.jpg",
-    url: `https://az-handyman.ca${gmbProfile.serviceType.toLowerCase().replace(/\s+/g, "-")}`,
-    telephone: gmbProfile.phone || "+17786534862",
+    image: "https://azhvac.ca/photos/homepage/AirConditioning.jpg",
+    url: "https://azhvac.ca/hvac",
+    telephone: gmbProfile.phone || "+17787705721",
     address: {
       "@type": "PostalAddress",
       addressLocality: gmbProfile.location,
@@ -101,8 +101,8 @@ export const generateLocalBusinessSchema = (gmbProfile: GMBProfile) => {
           "Saturday",
           "Sunday",
         ],
-        opens: "00:00",
-        closes: "23:59",
+        opens: "08:00",
+        closes: "18:00",
       },
     ],
     hasOfferCatalog: {
@@ -168,7 +168,7 @@ export const generateServiceSchema = (
     },
     provider: {
       "@type": "LocalBusiness",
-      name: "A-Z Handyman",
+      name: "AZ Air Conditioning and Heating",
     },
   };
 };
@@ -258,8 +258,8 @@ export const generateWebPageSchema = (
     inLanguage: "en-CA",
     isPartOf: {
       "@type": "WebSite",
-      name: "A-Z Handyman",
-      url: "https://az-handyman.ca",
+      name: "AZ Air Conditioning and Heating",
+      url: "https://azhvac.ca",
     },
   };
 };

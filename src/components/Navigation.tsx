@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
-import { Menu, X, Phone, Mail, Check } from "lucide-react";
+import { Menu, X, Phone, Mail } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -74,11 +74,10 @@ const Navigation = ({
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const isHomepage = router.pathname === "/" || router.pathname === "";
-  const isDrywallPage = router.pathname === "/drywall";
 
-  const phoneNumber = isDrywallPage ? "(778) 650-1965" : "(778) 770-5721";
-  const phoneNumberClean = isDrywallPage ? "(778) 650-1965" : "(778) 770-5721";
-  const email = "info@azhandyman.ca";
+  const phoneNumber = "(778) 770-5721";
+  const phoneNumberClean = "7787705721";
+  const email = "info@azhvac.ca";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -90,10 +89,18 @@ const Navigation = ({
   }, []);
 
   const navLinks = isHomepage
-    ? [{ text: "Services", url: "/services" }]
-    : [
-        { text: "Home", url: "/" },
+    ? [
         { text: "Services", url: "/services" },
+        { text: "HVAC", url: "/hvac" },
+        { text: "Why Choose Us", url: "/why-chose-us" },
+        { text: "Contact", url: "/contact" },
+      ]
+    : [
+        { text: "Home", url: "/hvac" },
+        { text: "Services", url: "/services" },
+        { text: "HVAC", url: "/hvac" },
+        { text: "Why Choose Us", url: "/why-chose-us" },
+        { text: "Contact", url: "/contact" },
       ];
 
   const navClasses = `
@@ -107,13 +114,12 @@ const Navigation = ({
     <nav className={navClasses}>
       {/* Mobile Navigation */}
       <div className="lg:hidden">
-        {/* Top Bar */}
         <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100">
-          <Link href="/" className="flex items-center">
+          <Link href="/hvac" className="flex items-center">
             <div className="relative h-12 w-36">
               <Image
-                src="/logo.webp"
-                alt="A-Z Handyman Vancouver"
+                src="/logo.png"
+                alt="AZ Air Conditioning and Heating - Vancouver HVAC"
                 fill
                 sizes="144px"
                 className="object-contain"
@@ -134,13 +140,12 @@ const Navigation = ({
           </button>
         </div>
 
-        {/* Contact Info Bar - Always visible */}
         <div className="px-4 py-3 bg-gray-50">
           <div className="space-y-2">
             <ContactButton
               textToCopy={phoneNumber}
               displayText={phoneNumber}
-              href={`tel:${phoneNumberClean}`}
+              href={`tel:+1${phoneNumberClean}`}
               icon={
                 <div className="flex items-center justify-center w-10 h-10 bg-yellow-500 rounded-full">
                   <Phone className="w-5 h-5 text-white" />
@@ -162,7 +167,6 @@ const Navigation = ({
           </div>
         </div>
 
-        {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="border-t border-gray-100">
             {navLinks.map((link) => (
@@ -182,11 +186,11 @@ const Navigation = ({
       {/* Desktop Navigation */}
       <div className="hidden lg:block max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-24">
-          <Link href="/" className="flex items-center">
+          <Link href="/hvac" className="flex items-center">
             <div className="relative h-16 w-48">
               <Image
-                src="/logo.webp"
-                alt="A-Z Handyman Vancouver"
+                src="/logo.png"
+                alt="AZ Air Conditioning and Heating - Vancouver HVAC"
                 fill
                 sizes="192px"
                 className="object-contain"
@@ -214,7 +218,7 @@ const Navigation = ({
               <ContactButton
                 textToCopy={phoneNumber}
                 displayText={phoneNumber}
-                href={`tel:${phoneNumberClean}`}
+                href={`tel:+1${phoneNumberClean}`}
                 icon={<Phone className="w-5 h-5" />}
                 className={
                   isHomepage

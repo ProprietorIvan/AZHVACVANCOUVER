@@ -23,7 +23,7 @@ export default async function handler(
                 });
             }
 
-            const to = "office@vancouverflood.com";
+            const to = process.env.HVAC_EMAIL || "info@azhvac.ca";
             console.log("📧 Processing form submission, sending email to:", to);
             console.log("📝 Received fields:", Object.keys(request.body));
 
@@ -36,14 +36,18 @@ export default async function handler(
                 email = "",
                 address = "",
                 projectDetails = "",
+                serviceType = "",
             } = request.body;
 
             // No field validation - accept any submission to maximize leads
+            const subjectLine = serviceType
+                ? `New Quote Request - ${serviceType}`
+                : "New HVAC Quote Request";
 
             const mailOptions = {
-                from: process.env.SMTP_FROM || process.env.SMTP_USER || "noreply@azhandyman.ca",
+                from: process.env.SMTP_FROM || process.env.SMTP_USER || "noreply@azhvac.ca",
                 to,
-                subject: "New HVAC Quote Request",
+                subject: subjectLine,
                 html: generateEmail({
                     name,
                     email,
@@ -53,6 +57,7 @@ export default async function handler(
                     facilityType,
                     hvacSystem,
                     urgency,
+                    serviceType,
                 }),
             };
 
@@ -90,6 +95,7 @@ function generateEmail({
     facilityType,
     hvacSystem,
     urgency,
+    serviceType,
 }: {
     name: string;
     email: string;
@@ -99,13 +105,14 @@ function generateEmail({
     facilityType: string;
     hvacSystem: string;
     urgency: string;
+    serviceType?: string;
 }) {
     return `
         <html>
             <head>
                 <meta charset="utf-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Felicita Holdings Ltd.</title>
+                <title>AZ Air Conditioning and Heating</title>
                 <style>
                     body, table, td, div, p, a {
                         -webkit-text-size-adjust: 100%;
@@ -347,8 +354,8 @@ function generateEmail({
             <body>
                 <div class="email-wrapper">
                     <div class="header">
-                        <div class="subtitle" style="font-size: 32px; font-weight: 500; letter-spacing: -0.02em;">New Opportunity</div>
-                        <div style="font-size: 18px; margin-top: 12px; opacity: 0.8; font-weight: 400;">Someone wants to be our customer</div>
+                        <div class="subtitle" style="font-size: 32px; font-weight: 500; letter-spacing: -0.02em;">${serviceType ? `New Quote - ${serviceType}` : "New Quote Request"}</div>
+                        <div style="font-size: 18px; margin-top: 12px; opacity: 0.8; font-weight: 400;">Quote request from website</div>
                     </div>
 
                     <div class="content">
@@ -359,6 +366,7 @@ function generateEmail({
                             ${email ? `<div class="info-label">Email</div><div class="info-value">${email}</div>` : ""}
                             ${phone ? `<div class="info-label">Phone</div><div class="info-value">${phone}</div>` : ""}
                             ${address ? `<div class="info-label">Address</div><div class="info-value">${address}</div>` : ""}
+                            ${serviceType ? `<div class="info-label">Service Type</div><div class="info-value">${serviceType}</div>` : ""}
                             ${projectDetails ? `<div class="info-label">Project Details</div><div class="info-value">${projectDetails}</div>` : ""}
                             ${facilityType ? `<div class="info-label">Facility Type</div><div class="info-value">${facilityType}</div>` : ""}
                             ${hvacSystem ? `<div class="info-label">HVAC System</div><div class="info-value">${hvacSystem}</div>` : ""}
@@ -367,7 +375,7 @@ function generateEmail({
                     </div>
 
                     <div class="footer">
-                        <div style="font-weight: 500;">© 2026 Felicita Holdings Ltd. All rights reserved.</div>
+                        <div style="font-weight: 500;">© ${new Date().getFullYear()} AZ Air Conditioning and Heating. All rights reserved.</div>
                         <div style="margin-top: 8px; font-size: 12px; opacity: 0.6;">This email contains confidential information.</div>
                     </div>
                 </div>

@@ -12,8 +12,28 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: '/',
+        destination: '/hvac',
+        permanent: false,
+      },
+      {
+        source: '/ac-repair-vancouver',
+        destination: '/hvac',
+        permanent: true,
+      },
+      {
+        source: '/ac-installation-vancouver',
+        destination: '/hvac',
+        permanent: true,
+      },
+      {
         source: '/services/restoration-services',
-        destination: '/flood-repair',
+        destination: '/hvac',
+        permanent: true,
+      },
+      {
+        source: '/furnace-installation-vancouver',
+        destination: '/furnace-repair-vancouver',
         permanent: true,
       },
     ]

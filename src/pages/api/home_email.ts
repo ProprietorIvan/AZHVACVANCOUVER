@@ -23,7 +23,7 @@ export default async function handler(
                 });
             }
 
-            const to = "office@vancouverflood.com";
+            const to = process.env.HVAC_EMAIL || "info@azhvac.ca";
             console.log("📧 Processing form submission, sending email to:", to);
             console.log("📝 Received fields:", Object.keys(request.body));
 
@@ -39,7 +39,7 @@ export default async function handler(
             // No field validation - accept any submission to maximize leads
 
             const mailOptions = {
-                from: process.env.SMTP_FROM || process.env.SMTP_USER || "noreply@azhandyman.ca",
+                from: process.env.SMTP_FROM || process.env.SMTP_USER || "noreply@azhvac.ca",
                 to,
                 subject: service ? `New Quote Request - ${service}` : "New Quote Request",
                 html: generateEmail({
@@ -92,11 +92,12 @@ function generateEmail({
     service: string;
     projectDetails: string;
 }) {
-    const serviceNames = {
-        drywall: "Drywall Repair",
-        flood: "Flood Restoration",
-        hvac: "HVAC Services",
-        handyman: "General Handyman",
+    const serviceNames: Record<string, string> = {
+        ac: "Air Conditioning",
+        heating: "Heating",
+        emergency: "Emergency HVAC",
+        maintenance: "HVAC Maintenance",
+        commercial: "Commercial HVAC",
     };
 
     const serviceName = serviceNames[service as keyof typeof serviceNames] || service;
@@ -106,7 +107,7 @@ function generateEmail({
             <head>
                 <meta charset="utf-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Felicita Holdings Ltd.</title>
+                <title>AZ Air Conditioning and Heating</title>
                 <style>
                     body, table, td, div, p, a {
                         -webkit-text-size-adjust: 100%;
@@ -239,7 +240,7 @@ function generateEmail({
                     </div>
 
                     <div class="footer">
-                        <p>© ${new Date().getFullYear()} Felicita Holdings Ltd. All rights reserved.</p>
+                        <p>© ${new Date().getFullYear()} AZ Air Conditioning and Heating. All rights reserved.</p>
                     </div>
                 </div>
             </body>

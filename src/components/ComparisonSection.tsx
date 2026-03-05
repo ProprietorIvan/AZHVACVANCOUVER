@@ -3,6 +3,9 @@ import { Check } from "lucide-react";
 import Head from "next/head";
 import Image from "next/image";
 
+const SITE_URL = "https://azhvac.ca";
+const BUSINESS_NAME = "AZ Air Conditioning and Heating";
+
 interface Service {
   title: string;
   description: string;
@@ -20,84 +23,42 @@ interface ServiceCardProps {
 const ComparisonSection = () => {
   const services: Service[] = [
     {
-      title: "FLOOD REPAIR",
+      title: "AIR CONDITIONING",
       description:
-        "When your property had suffered from the flood, A-Z Handyman will respond quickly to keep you from further damage and will begin the repair and reconstruction procedure as quickly as possible.",
-      buttonText: "FLOOD REPAIR",
-      image: "/photos/homepage/Flood-Restoration.jpg",
+        "Professional AC installation, repair, and maintenance. From ductless mini-splits to central air systems, we keep your Vancouver home cool and comfortable all summer long.",
+      buttonText: "AC SERVICES",
+      image: "/photos/homepage/aircondtioning.png",
       orientation: "right",
-      url: "/flood-repair",
-    },
-    {
-      title: "DRYWALL",
-      description:
-        "Do you need help for installing dry walls? With A-Z Handyman you have to the right place.",
-      buttonText: "DRYWALL SERVICES",
-      image: "/photos/homepage/DrywallRepair.jpg",
-      orientation: "left",
-      url: "/drywall",
-    },
-    {
-      title: "General Handyman",
-      description:
-        "For any repair, installation, or upgrade you envision, we offer comprehensive handyman solutions tailored to your needs.",
-      buttonText: "General Handyman",
-      image: "/photos/homepage/Handyman.jpg",
-      orientation: "right",
-      url: "/general-handyman",
-    },
-    {
-      title: "DEMOLITION",
-      description:
-        "Professional demolition services for residential and commercial properties. Safe, efficient, and complete cleanup included.",
-      buttonText: "DEMOLITION SERVICES",
-      image: "/photos/homepage/2.jpg",
-      orientation: "left",
-      url: "/demolition",
-    },
-    {
-      title: "AIR CONDITIONING SERVICE",
-      description:
-        "A regular air conditioning service is essential since it keeps your air conditioner functioning more efficiently.",
-      buttonText: "AIR CONDITIONING SERVICE",
-      image: "/photos/homepage/AirConditioning.jpg",
-      orientation: "left",
       url: "/hvac",
     },
+    {
+      title: "HEATING",
+      description:
+        "Furnace repair, heat pump installation, and boiler services. Our certified technicians ensure your heating system runs efficiently through Vancouver winters.",
+      buttonText: "HEATING SERVICES",
+      image: "/photos/homepage/heating.png",
+      orientation: "left",
+      url: "/furnace-repair-vancouver",
+    },
+    {
+      title: "24/7 EMERGENCY SERVICE",
+      description:
+        "When your HVAC fails, we respond. 2-hour guaranteed response time for urgent heating and cooling emergencies across the Lower Mainland.",
+      buttonText: "EMERGENCY HVAC",
+      image: "/photos/homepage/24/7-response.png",
+      orientation: "right",
+      url: "/emergency-hvac-vancouver",
+    },
+    {
+      title: "COMMERCIAL HVAC",
+      description:
+        "Rooftop units, VRF/VRV systems, building automation, and commercial refrigeration. We serve offices, retail, restaurants, and industrial facilities.",
+      buttonText: "COMMERCIAL SERVICES",
+      image: "/photos/homepage/commericial.jpg",
+      orientation: "left",
+      url: "/commercial-hvac-vancouver",
+    },
   ];
-
-  // Create JSON-LD structured data
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "HomeAndConstructionBusiness",
-    name: "A-Z Handyman",
-    url: "https://az-handyman.ca",
-    logo: "https://az-handyman.ca/logo.png",
-    image: services.map((service) => `https://az-handyman.ca${service.image}`),
-    description:
-      "Professional handyman services in Vancouver offering flood repair, drywall installation, general repairs, and HVAC services.",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Vancouver",
-      addressRegion: "BC",
-      addressCountry: "CA",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: "49.2827",
-      longitude: "-123.1207",
-    },
-    telephone: "+17786534862",
-    email: "info@azhandyman.ca",
-    priceRange: "$$",
-    areaServed: "Vancouver Metropolitan Area",
-    services: services.map((service) => ({
-      "@type": "Service",
-      name: service.title,
-      description: service.description,
-      url: `https://az-handyman.ca${service.url}`,
-    })),
-  };
 
   const [copiedPhone, setCopiedPhone] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
@@ -129,7 +90,7 @@ const ComparisonSection = () => {
             <div className="relative w-full h-[400px] md:h-[600px]">
               <Image
                 src={service.image}
-                alt={`${service.title} - Professional handyman services in Vancouver`}
+                alt={`${service.title} - Professional HVAC services in Vancouver`}
                 className="transition-transform duration-700 group-hover:scale-110 brightness-125 contrast-105 saturate-105"
                 fill
                 style={{ objectFit: "cover" }}
@@ -150,8 +111,7 @@ const ComparisonSection = () => {
                 className="text-sm opacity-90 drop-shadow-md"
                 style={{ textShadow: "1px 1px 2px rgba(0,0,0,0.5)" }}
               >
-                Learn more about our professional {service.title.toLowerCase()}{" "}
-                services in Vancouver
+                Learn more about our {service.title.toLowerCase()} in Vancouver
               </p>
             </div>
           </div>
@@ -193,67 +153,32 @@ const ComparisonSection = () => {
   return (
     <>
       <Head>
-        <title>
-          Professional Handyman Services in Vancouver | A-Z Handyman
-        </title>
+        <title>HVAC Services in Vancouver | {BUSINESS_NAME}</title>
         <meta
           name="description"
-          content="Vancouver's trusted handyman service offering flood repair, drywall installation, general repairs, and HVAC services. Fast, reliable, and professional service."
+          content="Professional HVAC services in Vancouver: AC installation, furnace repair, heat pump services, 24/7 emergency. 100+ 5-star reviews."
         />
         <meta
           name="keywords"
-          content="handyman vancouver, flood repair, drywall installation, HVAC service, home repairs vancouver, professional handyman, emergency repairs"
+          content="hvac vancouver, air conditioning vancouver, furnace repair vancouver, ac installation, heat pump vancouver, emergency hvac"
         />
-
-        {/* Open Graph tags */}
-        <meta
-          property="og:title"
-          content="Professional Handyman Services in Vancouver | A-Z Handyman"
-        />
-        <meta
-          property="og:description"
-          content="Vancouver's trusted handyman service offering flood repair, drywall installation, general repairs, and HVAC services. Fast, reliable, and professional service."
-        />
-        <meta
-          property="og:image"
-          content="https://az-handyman.ca/photos/homepage/Handyman.jpg"
-        />
-        <meta property="og:url" content="https://az-handyman.ca" />
+        <meta property="og:title" content={`HVAC Services | ${BUSINESS_NAME}`} />
+        <meta property="og:description" content="Professional HVAC services in Vancouver. AC, heating, 24/7 emergency." />
+        <meta property="og:image" content={`${SITE_URL}/photos/homepage/aircondtioning.png`} />
+        <meta property="og:url" content={SITE_URL} />
         <meta property="og:type" content="website" />
-
-        {/* Twitter Card tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Professional Handyman Services in Vancouver | A-Z Handyman"
-        />
-        <meta
-          name="twitter:description"
-          content="Vancouver's trusted handyman service offering flood repair, drywall installation, general repairs, and HVAC services."
-        />
-        <meta
-          name="twitter:image"
-          content="https://az-handyman.ca/photos/homepage/Handyman.jpg"
-        />
-
-        {/* Canonical URL */}
-        <link rel="canonical" href="https://az-handyman.ca" />
-
-        {/* JSON-LD structured data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
+        <meta name="twitter:title" content={`HVAC Services | ${BUSINESS_NAME}`} />
+        <link rel="canonical" href={SITE_URL} />
       </Head>
 
       <main>
-        {/* Contact Banner Section */}
         <section
           className="bg-black w-full p-8 space-y-6"
           aria-label="Contact Information"
         >
           <h1 className="text-3xl md:text-4xl font-bold text-white text-center mb-8">
-            One Call Can Solve All Your House Problems
+            One Call Solves All Your HVAC Problems
           </h1>
 
           <div className="flex justify-center">
@@ -269,7 +194,7 @@ const ComparisonSection = () => {
           </div>
 
           <button
-            onClick={() => copyToClipboard("7786534862", true)}
+            onClick={() => copyToClipboard("7787705721", true)}
             className="w-full text-center transition-transform duration-200"
             aria-label="Copy phone number to clipboard"
           >
@@ -287,18 +212,18 @@ const ComparisonSection = () => {
                   <Check className="w-8 h-8 md:w-12 md:h-12 animate-in fade-in duration-200" />
                 </div>
               ) : (
-                "+1 778-653-4862"
+                "+1 778-770-5721"
               )}
             </div>
           </button>
 
           <h2 className="text-xl md:text-2xl text-white text-center mb-6">
-            And, We Have More Options to Contact Us
+            Or Email Us for a Free Quote
           </h2>
 
           <div className="flex justify-center">
             <button
-              onClick={() => copyToClipboard("info@azhandyman.ca", false)}
+              onClick={() => copyToClipboard("info@azhvac.ca", false)}
               className={`${
                 copiedEmail
                   ? "bg-green-400 scale-95"
@@ -312,28 +237,26 @@ const ComparisonSection = () => {
                   <Check className="w-5 h-5 animate-in fade-in duration-200" />
                 </>
               ) : (
-                "Email Us"
+                "info@azhvac.ca"
               )}
             </button>
           </div>
         </section>
 
-        {/* Main Services Section */}
         <section className="py-16 px-5" aria-label="Our Services">
           <div className="max-w-7xl mx-auto">
             <header className="text-center mb-20">
-              <h2 className="text-5xl font-bold mb-6">OUR SERVICES</h2>
+              <h2 className="text-5xl font-bold mb-6">OUR HVAC SERVICES</h2>
               <div className="flex justify-center items-center gap-4 mb-8">
                 <div className="h-px w-16 bg-yellow-400" aria-hidden="true" />
-                <p className="text-lg text-gray-600">What We have Done</p>
+                <p className="text-lg text-gray-600">Heating, Cooling & Air Quality</p>
                 <div className="h-px w-16 bg-yellow-400" aria-hidden="true" />
               </div>
               <p className="max-w-3xl mx-auto text-lg text-gray-700 leading-relaxed">
-                Our skilled service delivers any complexity of household
-                repairs. Calling our master will give you the chance to quickly
-                and inexpensively resolve issues with the layout of your home.
-                Get in touch with us and you will receive guarantees for all
-                services as well as high-quality work.
+                Vancouver&apos;s trusted HVAC specialists. From emergency repairs to
+                complete system installations, our certified technicians deliver
+                expert service with 100+ 5-star reviews. 24/7 emergency
+                availability.
               </p>
             </header>
 

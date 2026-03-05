@@ -26,15 +26,15 @@ const Contact = () => {
     <section className="px-4 sm:px-6 py-16 sm:py-24 md:py-32 bg-white">
       <div className="max-w-4xl mx-auto text-center">
         <h3 className="text-3xl sm:text-4xl font-semibold mb-4 sm:mb-8">
-          Have a question?
+          Have an HVAC question?
         </h3>
         <p className="text-lg sm:text-xl text-gray-500 mb-8 sm:mb-12 max-w-2xl mx-auto px-4">
-          Contact us today.
+          Contact us today for a free estimate.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 md:gap-8 text-base sm:text-lg px-4">
           <a
             href="tel:+17787705721"
-            onClick={() => trackPhoneClick("contact_section", "contact")}
+            onClick={() => trackPhoneClick("contact_section", "hvac")}
             className={`flex items-center justify-center px-6 sm:px-8 py-4 rounded-full transition-all duration-200 group ${
               copiedPhone
                 ? "bg-green-600 text-white scale-95"
@@ -53,7 +53,7 @@ const Contact = () => {
           </a>
 
           <button
-            onClick={() => copyToClipboard("info@azhandyman.ca", false)}
+            onClick={() => copyToClipboard("info@azhvac.ca", false)}
             className={`flex items-center justify-center px-6 sm:px-8 py-4 rounded-full transition-all duration-200 group ${
               copiedEmail
                 ? "bg-green-600 text-white scale-95"
@@ -66,7 +66,7 @@ const Contact = () => {
               <Mail className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
             )}
             <span className="hidden sm:inline">
-              {copiedEmail ? "Copied!" : "info@azhandyman.ca"}
+              {copiedEmail ? "Copied!" : "info@azhvac.ca"}
             </span>
             <span className="sm:hidden">
               {copiedEmail ? "Copied!" : "Email Us"}

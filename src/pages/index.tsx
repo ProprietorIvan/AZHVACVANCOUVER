@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import ComparisonSection from "@/components/ComparisonSection";
 import FAQ from "@/components/FAQ";
-import FeaturesSection from "@/components/Features";
+import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
 import StepsSection from "@/components/StepsSection";
 import Testemonials from "@/components/Testemonials";
@@ -13,7 +13,9 @@ import Head from "next/head";
 import Image from "next/image";
 import type { NextPage } from "next";
 
-// Home page - updated May 5, 2025 at 14:47
+const SITE_URL = "https://azhvac.ca";
+const BUSINESS_NAME = "AZ Air Conditioning and Heating";
+
 const Home: NextPage = () => {
   const router = useRouter();
   const [showSuccess, setShowSuccess] = useState(false);
@@ -50,7 +52,6 @@ const Home: NextPage = () => {
       });
 
       if (response.ok) {
-        // Send lead to Get Timber webhook (with validation - gibberish won't be added)
         const { sendLeadToGetTimber } = await import("@/utils/sendLeadToGetTimber");
         await sendLeadToGetTimber({
           name: formData.name,
@@ -58,8 +59,8 @@ const Home: NextPage = () => {
           phone: formData.phone,
           address: formData.address,
           message: formData.projectDetails,
-          serviceType: formData.service || "General Inquiry",
-          leadSource: "AZ Handyman Website - Homepage Form",
+          serviceType: formData.service || "HVAC Inquiry",
+          leadSource: "AZ Air Conditioning Website - Homepage Form",
         });
 
         setShowSuccess(true);
@@ -82,85 +83,64 @@ const Home: NextPage = () => {
   };
 
   const services = [
-    {
-      id: "drywall",
-      name: "Drywall Repair",
-      description: "Professional drywall installation and repair services",
-    },
-    {
-      id: "flood",
-      name: "Flood Restoration",
-      description: "Emergency flood damage restoration and water damage repair",
-    },
-    {
-      id: "hvac",
-      name: "HVAC Services",
-      description: "Heating, ventilation, and air conditioning services",
-    },
-    {
-      id: "handyman",
-      name: "General Handyman",
-      description: "General home repairs and maintenance services",
-    },
-    {
-      id: "demolition",
-      name: "Demolition Services",
-      description:
-        "Professional demolition services for residential and commercial properties",
-    },
+    { id: "ac", name: "Air Conditioning", description: "AC installation, repair & maintenance" },
+    { id: "heating", name: "Heating", description: "Furnace, heat pump & boiler services" },
+    { id: "emergency", name: "Emergency Service", description: "24/7 emergency HVAC repair" },
+    { id: "maintenance", name: "Maintenance", description: "Preventive maintenance plans" },
+    { id: "commercial", name: "Commercial HVAC", description: "Commercial & industrial HVAC" },
   ];
 
   const businessStructuredData = {
     "@context": "https://schema.org",
-    "@type": "HomeAndConstructionBusiness",
-    name: "A-Z Handyman",
-    image: "https://az-handyman.ca/photos/homepage/2.jpg",
-    url: "https://az-handyman.ca",
-    "@id": "https://az-handyman.ca/#organization",
+    "@type": "HVACContractor",
+    name: BUSINESS_NAME,
+    image: `${SITE_URL}/photos/homepage/aircondtioning.png`,
+    url: SITE_URL,
+    "@id": `${SITE_URL}/#organization`,
     description:
-      "Most trusted home services and handyman company in Vancouver offering professional home repairs, renovations, and maintenance services.",
+      "Vancouver's trusted HVAC contractor. Professional air conditioning, heating, and ventilation services. 100+ 5-star reviews. 24/7 emergency service.",
     address: {
       "@type": "PostalAddress",
+      streetAddress: "922 Homer St",
       addressLocality: "Vancouver",
       addressRegion: "BC",
+      postalCode: "V6B 1T7",
       addressCountry: "CA",
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: "49.2827",
-      longitude: "-123.1207",
+      latitude: "49.2766",
+      longitude: "-123.1193",
     },
     aggregateRating: {
       "@type": "AggregateRating",
-      ratingValue: "5",
-      reviewCount: "1000",
+      ratingValue: "4.9",
+      reviewCount: "100",
       bestRating: "5",
       worstRating: "1",
     },
     areaServed: "Vancouver Metropolitan Area",
     priceRange: "$$",
-    openingHours: "Mo-Su 08:00-20:00",
-    telephone: "+17786534862",
-    sameAs: [
-      "https://www.facebook.com/azhandyman",
-      "https://www.instagram.com/azhandyman",
-    ],
+    openingHours: "Mo-Su 08:00-18:00",
+    telephone: "+17787705721",
   };
 
   const localBusinessStructuredData = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    name: "A-Z Handyman Vancouver",
-    image: "https://az-handyman.ca/photos/homepage/2.jpg",
+    name: BUSINESS_NAME,
+    image: `${SITE_URL}/photos/homepage/aircondtioning.png`,
     priceRange: "$$",
     address: {
       "@type": "PostalAddress",
+      streetAddress: "922 Homer St",
       addressLocality: "Vancouver",
       addressRegion: "BC",
+      postalCode: "V6B 1T7",
       addressCountry: "CA",
     },
-    telephone: "+17786534862",
-    url: "https://az-handyman.ca",
+    telephone: "+17787705721",
+    url: SITE_URL,
   };
 
   const faqSchema = {
@@ -169,10 +149,10 @@ const Home: NextPage = () => {
     mainEntity: [
       {
         "@type": "Question",
-        name: "How long does a typical repair take?",
+        name: "How quickly can you respond to HVAC emergencies?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Small repairs can be completed in 2-4 hours. Larger projects typically take 1-2 days.",
+          text: "We guarantee a 2-hour response time for emergency HVAC services across Vancouver and the Lower Mainland. Our technicians are available 24/7 for urgent heating and cooling failures.",
         },
       },
       {
@@ -180,7 +160,7 @@ const Home: NextPage = () => {
         name: "Do you provide free estimates?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Yes, we provide free, no-obligation estimates for all repair and maintenance projects in Vancouver.",
+          text: "Yes, we provide free, no-obligation estimates for all HVAC installation, repair, and maintenance projects in Vancouver.",
         },
       },
     ],
@@ -190,100 +170,77 @@ const Home: NextPage = () => {
     <>
       <DomainRedirectHandler />
       <Head>
-        <>
-          <title>
-            A-Z Handyman Vancouver | Professional Home Repair & Maintenance
-            Services
-          </title>
-          <meta
-            name="description"
-            content="Vancouver's most trusted handyman service. Professional home repairs, renovations, and maintenance with 1000+ satisfied customers. Get your quote today!"
-          />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <meta charSet="utf-8" />
+        <title>
+          AZ Air Conditioning and Heating | Vancouver HVAC Contractor | 100+ 5-Star Reviews
+        </title>
+        <meta
+          name="description"
+          content="Vancouver's #1 HVAC contractor. AC installation, furnace repair, heat pump services. 100+ 5-star reviews. 24/7 emergency service. Call (778) 770-5721."
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charSet="utf-8" />
 
-          {/* Open Graph */}
-          <meta property="og:type" content="website" />
-          <meta property="og:url" content="https://az-handyman.ca" />
-          <meta
-            property="og:title"
-            content="A-Z Handyman Vancouver | Professional Home Services"
-          />
-          <meta
-            property="og:description"
-            content="Vancouver's most trusted handyman service. Professional home repairs, renovations, and maintenance with 1000+ satisfied customers."
-          />
-          <meta
-            property="og:image"
-            content="https://az-handyman.ca/photos/homepage/2.jpg"
-          />
-          <meta property="og:site_name" content="A-Z Handyman" />
-          <meta property="og:locale" content="en_CA" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={SITE_URL} />
+        <meta
+          property="og:title"
+          content={`${BUSINESS_NAME} | Vancouver HVAC Contractor`}
+        />
+        <meta
+          property="og:description"
+          content="Vancouver's trusted HVAC specialists. AC installation, furnace repair, heat pump services. 100+ 5-star reviews. 24/7 emergency service."
+        />
+        <meta
+          property="og:image"
+          content={`${SITE_URL}/photos/homepage/slider.png`}
+        />
+        <meta property="og:site_name" content={BUSINESS_NAME} />
+        <meta property="og:locale" content="en_CA" />
 
-          {/* Twitter */}
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:url" content="https://az-handyman.ca" />
-          <meta
-            name="twitter:title"
-            content="A-Z Handyman Vancouver | Professional Home Services"
-          />
-          <meta
-            name="twitter:description"
-            content="Vancouver's trusted handyman service. Expert home repairs and maintenance."
-          />
-          <meta
-            name="twitter:image"
-            content="https://az-handyman.ca/photos/homepage/2.jpg"
-          />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content={SITE_URL} />
+        <meta
+          name="twitter:title"
+          content={`${BUSINESS_NAME} | Vancouver HVAC Contractor`}
+        />
+        <meta
+          name="twitter:description"
+          content="Vancouver's trusted HVAC service. AC, heating, 24/7 emergency."
+        />
+        <meta
+          name="twitter:image"
+          content={`${SITE_URL}/photos/homepage/slider.png`}
+        />
 
-          {/* Additional meta tags */}
-          <meta
-            name="keywords"
-            content="handyman vancouver, home repair vancouver, renovation services, home maintenance, professional handyman, vancouver contractor"
-          />
-          <meta name="robots" content="index, follow" />
-          <meta name="author" content="A-Z Handyman" />
-          <meta name="geo.region" content="CA-BC" />
-          <meta name="geo.placename" content="Vancouver" />
-          <meta name="language" content="English" />
-          <meta name="revisit-after" content="7 days" />
-          <meta name="distribution" content="global" />
-          <meta name="rating" content="general" />
-          <link rel="canonical" href="https://az-handyman.ca/" />
+        <meta
+          name="keywords"
+          content="hvac vancouver, air conditioning vancouver, furnace repair vancouver, ac installation vancouver, heat pump vancouver, hvac contractor vancouver bc"
+        />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content={BUSINESS_NAME} />
+        <meta name="geo.region" content="CA-BC" />
+        <meta name="geo.placename" content="Vancouver" />
+        <meta name="language" content="English" />
+        <link rel="canonical" href={`${SITE_URL}/`} />
 
-          {/* Structured Data */}
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify(businessStructuredData),
-            }}
-          />
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify(localBusinessStructuredData),
-            }}
-          />
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-          />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(businessStructuredData),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(localBusinessStructuredData),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
 
-          {/* Favicon */}
-          <link rel="icon" href="/favicon.ico" />
-          <link
-            rel="icon"
-            type="image/png"
-            sizes="32x32"
-            href="/favicon-32x32.png"
-          />
-          <link
-            rel="icon"
-            type="image/png"
-            sizes="16x16"
-            href="/favicon-16x16.png"
-          />
-        </>
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <div className="min-h-screen bg-white">
@@ -293,13 +250,13 @@ const Home: NextPage = () => {
         <section className="relative min-h-[90vh] flex items-center">
           <div className="absolute inset-0 w-full h-full">
             <Image
-              src="/photos/homepage/2.jpg"
-              alt="Professional handyman services in Vancouver - Home repairs, renovations, and maintenance specialists"
+              src="/photos/homepage/slider.png"
+              alt="Professional HVAC services in Vancouver - Air conditioning, heating, and ventilation specialists"
               fill
-              className="object-cover object-[85%_25%] brightness-125 contrast-105"
+              className="object-cover object-center brightness-110 contrast-105"
               priority
             />
-            <div className="absolute inset-0 bg-black/15" />
+            <div className="absolute inset-0 bg-black/25" />
           </div>
 
           <div className="relative max-w-7xl mx-auto px-4 py-20 md:py-32 w-full">
@@ -308,13 +265,14 @@ const Home: NextPage = () => {
                 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 text-white drop-shadow-lg"
                 style={{ textShadow: "2px 2px 4px rgba(0,0,0,0.5)" }}
               >
-                Home Repairs Made Effortless
+                Year-Round Comfort.
+                <span className="block">Expert HVAC Service.</span>
               </h1>
               <p
                 className="text-xl md:text-2xl text-white mb-8 drop-shadow-md"
                 style={{ textShadow: "1px 1px 3px rgba(0,0,0,0.5)" }}
               >
-                Most trusted home services company in Vancouver
+                Vancouver&apos;s #1 HVAC contractor with 100+ 5-star reviews
               </p>
               <button
                 onClick={() => window.open("/services", "_current")}
@@ -335,7 +293,7 @@ const Home: NextPage = () => {
                   className="text-white text-lg drop-shadow-md"
                   style={{ textShadow: "1px 1px 2px rgba(0,0,0,0.5)" }}
                 >
-                  1000+ Satisfied Customers
+                  100+ 5-Star Reviews
                 </span>
               </div>
             </div>
@@ -356,7 +314,7 @@ const Home: NextPage = () => {
                   Get Started Today
                 </h2>
                 <p className="text-lg text-gray-600">
-                  Tell us about your project and we&apos;ll get back to you
+                  Tell us about your HVAC needs and we&apos;ll get back to you
                   within 2 hours
                 </p>
               </div>
@@ -450,7 +408,7 @@ const Home: NextPage = () => {
                       onChange={handleInputChange}
                       rows={4}
                       className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-gray-900 focus:border-transparent"
-                      placeholder="Please describe your project requirements..."
+                      placeholder="Please describe your HVAC needs..."
                     ></textarea>
                   </div>
 
@@ -468,7 +426,7 @@ const Home: NextPage = () => {
                     </button>
                   )}
                   <p className="text-sm text-gray-600 text-center">
-                    2-hour response • Expert service • Vancouver certified
+                    2-hour response • Licensed HVAC • Vancouver certified
                   </p>
                 </form>
               </div>
@@ -479,19 +437,19 @@ const Home: NextPage = () => {
           <section className="bg-black text-white py-24">
             <div className="max-w-7xl mx-auto px-4 text-center">
               <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                Ready to Transform Your Home?
+                Ready for Year-Round Comfort?
               </h2>
               <p className="text-gray-300 mb-12 text-xl max-w-3xl mx-auto">
-                Join thousands of satisfied Vancouver homeowners who trust us
-                with their home repairs
+                Join 100+ satisfied Vancouver homeowners who trust AZ Air
+                Conditioning and Heating for their HVAC needs
               </p>
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                <button
-                  onClick={() => router.push("/quote")}
-                  className="w-full sm:w-auto bg-white text-black px-8 py-4 rounded-lg text-lg font-medium hover:bg-yellow-400 transition-colors duration-300"
+                <a
+                  href="tel:+17787705721"
+                  className="w-full sm:w-auto bg-white text-black px-8 py-4 rounded-lg text-lg font-medium hover:bg-yellow-400 transition-colors duration-300 text-center"
                 >
-                  Request Free Quote
-                </button>
+                  Call (778) 770-5721
+                </a>
                 <button
                   onClick={() => router.push("/services")}
                   className="w-full sm:w-auto bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-white hover:text-black transition-colors duration-300"
@@ -502,6 +460,7 @@ const Home: NextPage = () => {
             </div>
           </section>
         </main>
+        <Footer />
       </div>
     </>
   );

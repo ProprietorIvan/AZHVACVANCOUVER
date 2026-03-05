@@ -2,33 +2,36 @@ import React from "react";
 import Head from "next/head";
 import Link from "next/link";
 
+const SITE_URL = "https://azhvac.ca";
+const BUSINESS_NAME = "AZ Air Conditioning and Heating";
+
 const Footer = () => {
-  // Structured data for the organization
   const organizationStructuredData = {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "A-Z Handyman",
-    url: "https://az-handyman.ca",
-    logo: "https://az-handyman.ca/logo.png",
-    parentOrganization: {
-      "@type": "Organization",
-      name: "Felicita Group",
-      url: "https://www.felicita.group",
-    },
+    "@type": "HVACContractor",
+    name: BUSINESS_NAME,
+    url: SITE_URL,
+    logo: `${SITE_URL}/logo.png`,
     address: {
       "@type": "PostalAddress",
-      streetAddress: "1205 Howe St.",
+      streetAddress: "922 Homer St",
       addressLocality: "Vancouver",
       addressRegion: "BC",
-      postalCode: "V6Z 1R3",
+      postalCode: "V6B 1T7",
       addressCountry: "CA",
     },
     contactPoint: {
       "@type": "ContactPoint",
-      telephone: "+17786534862",
+      telephone: "+17787705721",
       contactType: "customer service",
-      email: "info@az-handyman.ca",
+      email: "info@azhvac.ca",
       availableLanguage: ["English"],
+      areaServed: "CA-BC",
+    },
+    parentOrganization: {
+      "@type": "Organization",
+      name: "Felicita Group",
+      url: "https://www.felicita.group",
     },
     openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",
@@ -41,8 +44,8 @@ const Footer = () => {
         "Saturday",
         "Sunday",
       ],
-      opens: "00:00",
-      closes: "23:59",
+      opens: "08:00",
+      closes: "18:00",
     },
   };
 
@@ -63,7 +66,6 @@ const Footer = () => {
           aria-label="Site Footer"
         >
           <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* We are here to help Section */}
             <section aria-label="About Us">
               <h2 className="text-lg font-semibold mb-4">
                 We are here to help
@@ -73,13 +75,12 @@ const Footer = () => {
                 aria-hidden="true"
               ></div>
               <p className="text-gray-300">
-                If you do not see the service you need, contact us. At A-Z
-                Handyman, no task is too big or small—we are ready to take on
-                new challenges and get the job done right.
+                Vancouver&apos;s trusted HVAC contractor. From AC installation to
+                furnace repair, we deliver expert heating and cooling solutions.
+                No HVAC job is too big or small—call us for a free estimate.
               </p>
             </section>
 
-            {/* Opening Hours Section */}
             <section aria-label="Opening Hours">
               <h2 className="text-lg font-semibold mb-4">
                 OPENING <span className="text-yellow-500">HOURS</span>
@@ -89,11 +90,12 @@ const Footer = () => {
                 aria-hidden="true"
               ></div>
               <p className="text-gray-300">
-                Open 24 hours a day, 7 days a week!
+                Mon–Sun: 8 AM – 6 PM
+                <br />
+                24/7 Emergency Service Available
               </p>
             </section>
 
-            {/* Contact Here Section */}
             <section aria-label="Contact Information">
               <h2 className="text-lg font-semibold mb-4">
                 CONTACT <span className="text-yellow-500">HERE</span>
@@ -103,30 +105,29 @@ const Footer = () => {
                 aria-hidden="true"
               ></div>
               <address className="text-gray-300 space-y-2 not-italic">
-                <p>Address: 1217 Howe St. Vancouver BC</p>
+                <p>922 Homer St, Vancouver, BC V6B 1T7</p>
                 <p>
                   Phone:{" "}
                   <a
-                    href="tel:+17786534862"
+                    href="tel:+17787705721"
                     className="hover:text-white transition-colors"
                   >
-                    (778) 653-4862
+                    (778) 770-5721
                   </a>
                 </p>
                 <p>
                   Email:{" "}
                   <a
-                    href="mailto:info@azhandyman.ca"
+                    href="mailto:info@azhvac.ca"
                     className="hover:text-white transition-colors"
                   >
-                    info@azhandyman.ca
+                    info@azhvac.ca
                   </a>
                 </p>
               </address>
             </section>
           </div>
 
-          {/* Bottom Bar */}
           <div className="max-w-7xl mx-auto mt-8 pt-8 border-t border-gray-800">
             <div className="flex flex-col items-center text-gray-400 text-sm space-y-4">
               <div className="text-xs tracking-wider text-gray-500">
@@ -140,7 +141,7 @@ const Footer = () => {
                 </a>
               </div>
               <div className="flex flex-col md:flex-row justify-between items-center w-full">
-                <p>© {new Date().getFullYear()}. ALL RIGHTS RESERVED</p>
+                <p>© {new Date().getFullYear()} {BUSINESS_NAME}. All rights reserved.</p>
                 <div className="flex space-x-8 mt-4 md:mt-0">
                   <Link
                     href="/privacy-policy"

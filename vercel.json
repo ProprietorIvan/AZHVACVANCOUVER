@@ -2,52 +2,6 @@
   "version": 2,
   "buildCommand": "npm run build",
   "outputDirectory": ".next",
-  "redirects": [
-    {
-      "source": "/(.*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "vancouver-drywall.com"
-        }
-      ],
-      "destination": "https://az-handyman.ca/drywall",
-      "permanent": true
-    },
-    {
-      "source": "/(.*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.vancouver-drywall.com"
-        }
-      ],
-      "destination": "https://az-handyman.ca/drywall",
-      "permanent": true
-    },
-    {
-      "source": "/(.*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "azhvac.ca"
-        }
-      ],
-      "destination": "https://az-handyman.ca/hvac",
-      "permanent": true
-    },
-    {
-      "source": "/(.*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.azhvac.ca"
-        }
-      ],
-      "destination": "https://az-handyman.ca/hvac",
-      "permanent": true
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -69,4 +23,4 @@
   ],
   "trailingSlash": false,
   "cleanUrls": true
-} 
+}

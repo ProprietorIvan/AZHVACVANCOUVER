@@ -102,6 +102,7 @@ export type Lead = {
     "Commercial Form" |
     "Form Drywall" |
     "Form Handyman" |
+    "HVAC Form" |
     "Form Demolition" |
     "Form Drywall Burnaby" |
     "Phone Lead - General" |
@@ -120,6 +121,7 @@ export type Lead = {
     "Mold" |
     "Drywall Repair" |
     "Handyman" |
+    "HVAC" |
     "Major Renovation" | "Demolition";//job type
     "status_1_Mjj7Dz0C": "No Payment Due";
     "status_1_Mjj7nPIN": "Not Insurance";

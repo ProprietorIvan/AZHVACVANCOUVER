@@ -26,7 +26,7 @@ export default async function handler(
                 });
             }
 
-            const to = "office@vancouverflood.com";
+            const to = process.env.HVAC_EMAIL || "info@azhvac.ca";
             console.log("📧 Processing contact form submission, sending email to:", to);
 
             const {
@@ -51,9 +51,9 @@ export default async function handler(
             const emailAddress = address || "Not provided";
 
             const mailOptions = {
-                from: process.env.SMTP_FROM || process.env.SMTP_USER || "noreply@azhandyman.ca",
+                from: process.env.SMTP_FROM || process.env.SMTP_USER || "noreply@azhvac.ca",
                 to,
-                subject: "New Contact Form Submission from AZ Handyman Website",
+                subject: "New Contact Form Submission from AZ Air Conditioning Website",
                 html: generateEmail({
                     name,
                     email,
@@ -117,7 +117,7 @@ function generateEmail({
             <head>
                 <meta charset="utf-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>AZ Handyman - Contact Form</title>
+                <title>AZ Air Conditioning - Contact Form</title>
                 <style>
                     body, table, td, div, p, a {
                         -webkit-text-size-adjust: 100%;
@@ -271,7 +271,7 @@ function generateEmail({
                 <div class="email-wrapper">
                     <div class="header">
                         <div class="subtitle" style="font-size: 32px; font-weight: 500; letter-spacing: -0.02em;">New Contact Form Submission</div>
-                        <div style="font-size: 18px; margin-top: 12px; opacity: 0.8; font-weight: 400;">Someone wants to contact AZ Handyman</div>
+                        <div style="font-size: 18px; margin-top: 12px; opacity: 0.8; font-weight: 400;">Someone wants to contact AZ Air Conditioning and Heating</div>
                     </div>
 
                     <div class="content">
@@ -315,7 +315,7 @@ function generateEmail({
                     </div>
 
                     <div class="footer">
-                        <div style="font-weight: 500;">© 2026 AZ Handyman. All rights reserved.</div>
+                        <div style="font-weight: 500;">© ${new Date().getFullYear()} AZ Air Conditioning and Heating. All rights reserved.</div>
                         <div style="margin-top: 8px; font-size: 12px; opacity: 0.6;">This email contains confidential information.</div>
                     </div>
                 </div>

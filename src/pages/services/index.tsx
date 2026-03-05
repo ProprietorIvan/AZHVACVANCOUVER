@@ -1,8 +1,8 @@
-import React from 'react';
-import { Wrench } from 'lucide-react';
-import Image from 'next/image';
-import Head from 'next/head';
-import Navigation from '../../components/Navigation';
+import React from "react";
+import Image from "next/image";
+import Head from "next/head";
+import Navigation from "../../components/Navigation";
+import Footer from "../../components/Footer";
 
 interface Service {
   title: string;
@@ -14,62 +14,93 @@ interface Service {
 const Services = () => {
   const services: Service[] = [
     {
-      title: "General Handyman Services",
-      description: "Comprehensive solutions for repairs, installations, and upgrades tailored to your needs.",
-      image: "/photos/homepage/Handyman.jpg",
-      link: '/general-handyman'
+      title: "AC Repair & Installation Vancouver",
+      description: "Professional AC repair and installation. Central air, ductless. 24/7 emergency service.",
+      image: "/photos/homepage/aircondtioning.png",
+      link: "/hvac",
     },
     {
-      title: "Drywall Installation & Repair",
-      description: "Professional drywall services, including patching, installation, and painting.",
-      image: "/photos/homepage/DrywallRepair.jpg",
-      link: '/drywall'
+      title: "Furnace Repair & Installation Vancouver",
+      description: "Furnace repair, installation, and maintenance. Gas and electric. Rebate assistance.",
+      image: "/photos/homepage/heating.png",
+      link: "/furnace-repair-vancouver",
     },
     {
-      title: "Flood Repair",
-      description: "Swift response to prevent further damage and ensure a seamless repair process.",
-      image: "/photos/homepage/Flood-Restoration.jpg",
-      link: '/flood-repair'
-    },
-    {
-      title: "Demolition",
-      description: "Professional demolition services for both residential and commercial projects. Safe and efficient execution.",
+      title: "Heat Pump Vancouver",
+      description: "Heat pump installation with rebate assistance. Energy-efficient heating & cooling.",
       image: "/photos/homepage/2.jpg",
-      link: '/demolition'
+      link: "/heat-pump-vancouver",
     },
     {
-      title: "Air Conditioning Services",
-      description: "Regular servicing to keep your AC running efficiently and reliably.",
-      image: "/photos/homepage/AirConditioning.jpg",
-      link: '/hvac'
-    }
+      title: "Ductless Mini-Split Vancouver",
+      description: "Ductless mini-split installation. No ductwork needed. Rebates available.",
+      image: "/photos/homepage/2.jpg",
+      link: "/ductless-mini-split-vancouver",
+    },
+    {
+      title: "Boiler Service Vancouver",
+      description: "Boiler repair and installation. Hydronic heating systems.",
+      image: "/photos/homepage/heating.png",
+      link: "/boiler-service-vancouver",
+    },
+    {
+      title: "Duct Cleaning Vancouver",
+      description: "Professional duct cleaning. Improve air quality.",
+      image: "/photos/homepage/aircondtioning.png",
+      link: "/duct-cleaning-vancouver",
+    },
+    {
+      title: "Commercial HVAC Vancouver",
+      description: "Rooftop units, VRF systems. Maintenance contracts.",
+      image: "/photos/homepage/commericial.jpg",
+      link: "/commercial-hvac-vancouver",
+    },
+    {
+      title: "HVAC Maintenance Vancouver",
+      description: "Preventive maintenance plans. Annual tune-ups.",
+      image: "/photos/homepage/aircondtioning.png",
+      link: "/hvac-maintenance-vancouver",
+    },
+    {
+      title: "Emergency HVAC",
+      description: "24/7 emergency service. 2-hour response. No overtime charges.",
+      image: "/photos/homepage/24/7-response.png",
+      link: "/emergency-hvac-vancouver",
+    },
+    {
+      title: "All HVAC Services",
+      description: "Complete HVAC solutions for Vancouver.",
+      image: "/photos/homepage/aircondtioning.png",
+      link: "/hvac",
+    },
   ];
 
   const handleOpenService = (link: string) => {
-    window.open(link, '_current');
+    window.open(link, "_current");
   };
 
   return (
     <div className="min-h-screen bg-white">
       <Head>
-        <title>Professional Handyman Services in Vancouver | A-Z Handyman</title>
-        <meta name="description" content="Vancouver&apos;s trusted handyman service offering comprehensive solutions including repairs, installations, and maintenance." />
+        <title>HVAC Services in Vancouver | AZ Air Conditioning and Heating</title>
+        <meta
+          name="description"
+          content="Professional HVAC services in Vancouver: AC installation, furnace repair, heat pump services, 24/7 emergency service. 100+ 5-star reviews."
+        />
       </Head>
 
       <Navigation />
-      
+
       <main className="pt-32 pb-16">
-        {/* Header Section */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Vancouver&apos;s Premier Handyman Services
+            Vancouver&apos;s Premier HVAC Services
           </h1>
           <p className="text-lg text-gray-600">
-            One call solves all your home problems.
+            Heating, cooling, and air quality solutions for your home or business.
           </p>
         </div>
 
-        {/* Services Grid */}
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {services.map((service, index) => (
@@ -98,6 +129,7 @@ const Services = () => {
           </div>
         </div>
       </main>
+      <Footer />
     </div>
   );
 };
