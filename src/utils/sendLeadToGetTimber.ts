@@ -43,7 +43,7 @@ export async function sendLeadToGetTimber(leadData: {
       formPage: leadData.formPage || "/contact",
     };
 
-    const webhookResponse = await fetch("https://gettimber.ai/api/webhooks/forms/az-hvac", {
+    const webhookResponse = await fetch("/api/send-to-timber", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

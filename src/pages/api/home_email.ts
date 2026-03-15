@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import nodemailer from "nodemailer";
 import { buildEmailHtml } from "@/utils/emailTemplate";
+import { forwardToTimber } from "@/utils/forwardToTimber";
 
 const transporter = nodemailer.createTransport({
     service: "gmail",
@@ -55,6 +56,19 @@ export default async function handler(
 
             await transporter.sendMail(mailOptions);
             console.log("✅ Email sent successfully to:", to);
+
+            await forwardToTimber({
+                name,
+                email,
+                phone,
+                address,
+                message: projectDetails,
+                projectDetails,
+                serviceType: service || "General",
+                formPage: "/",
+                leadSource: "AZ Air Conditioning Website - Home Form",
+            });
+
             return respond.status(200).json({ message: "Email sent successfully" });
         } catch (error: any) {
             console.error("❌ Error sending email:", error);

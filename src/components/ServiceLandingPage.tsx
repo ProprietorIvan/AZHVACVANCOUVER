@@ -45,6 +45,8 @@ export interface ServiceLandingConfig {
   introContent?: string;
   /** Show emergency banner */
   showEmergencyBanner?: boolean;
+  /** Service area cities for SEO/local */
+  serviceAreas?: string[];
 }
 
 const ServiceLandingPage = ({ config }: { config: ServiceLandingConfig }) => {
