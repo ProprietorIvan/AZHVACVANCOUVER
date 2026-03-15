@@ -7,7 +7,14 @@ import {
   useState,
 } from "react";
 import Input from "./Input";
-import { ContactForm } from "./Quote";
+
+export type ContactForm = {
+  name: string;
+  phone: string;
+  email: string;
+  address: string;
+  question?: string;
+};
 
 const AskContactsForQuote: FC<{
   type: string;
