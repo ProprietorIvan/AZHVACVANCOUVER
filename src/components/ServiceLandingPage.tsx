@@ -15,6 +15,7 @@ import {
   generateBreadcrumbSchema,
   generateServiceSchema,
   generateFAQPageSchema,
+  generateWebPageSchema,
 } from "@/utils/seo";
 
 export interface ServiceLandingConfig {
@@ -88,6 +89,7 @@ const ServiceLandingPage = ({ config }: { config: ServiceLandingConfig }) => {
             message: payload.projectDetails,
             serviceType: config.serviceType,
             leadSource: `AZ Air Conditioning Website - ${config.serviceType} Form`,
+            formPage: `/${config.slug}`,
           });
         } catch {
           // Lead tracking is optional
@@ -120,6 +122,7 @@ const ServiceLandingPage = ({ config }: { config: ServiceLandingConfig }) => {
     "Vancouver"
   );
   const faqSchema = generateFAQPageSchema(config.faqs, `https://azhvac.ca/${config.slug}`);
+  const webPageSchema = generateWebPageSchema(config.heroTitle, `https://azhvac.ca/${config.slug}`, config.metaDescription);
 
   const defaultTestimonials = [
     { name: "Chris Anderson", role: "Vancouver Homeowner", text: "Excellent service! Professional and knowledgeable. Highly recommend." },
@@ -146,14 +149,27 @@ const ServiceLandingPage = ({ config }: { config: ServiceLandingConfig }) => {
       <Head>
         <title>{config.metaTitle}</title>
         <meta name="description" content={config.metaDescription} />
-        <meta name="keywords" content={`${config.serviceType.toLowerCase()} vancouver, ${config.serviceType} vancouver bc`} />
+        <meta name="keywords" content={`${config.serviceType.toLowerCase()} vancouver, ${config.serviceType} vancouver bc, hvac vancouver`} />
         <link rel="canonical" href={`https://azhvac.ca/${config.slug}`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`https://azhvac.ca/${config.slug}`} />
+        <meta property="og:title" content={config.metaTitle} />
+        <meta property="og:description" content={config.metaDescription} />
+        <meta property="og:image" content={`https://azhvac.ca${config.heroImage || "/photos/homepage/aircondtioning.png"}`} />
+        <meta property="og:site_name" content="AZ Air Conditioning and Heating" />
+        <meta property="og:locale" content="en_CA" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content={`https://azhvac.ca/${config.slug}`} />
+        <meta name="twitter:title" content={config.metaTitle} />
+        <meta name="twitter:description" content={config.metaDescription} />
+        <meta name="twitter:image" content={`https://azhvac.ca${config.heroImage || "/photos/homepage/aircondtioning.png"}`} />
         {localBusinessSchema && (
           <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
         )}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
       </Head>
 
       <div className="min-h-screen bg-white">

@@ -62,6 +62,7 @@ const Home: NextPage = () => {
           message: formData.projectDetails,
           serviceType: formData.service || "HVAC Inquiry",
           leadSource: "AZ Air Conditioning Website - Homepage Form",
+          formPage: "/",
         });
 
         setShowSuccess(true);

@@ -1,5 +1,5 @@
 /**
- * Sends lead data to Get Timber webhook with validation
+ * Sends lead data to Get Timber webhook (AZ HVAC form endpoint)
  * Returns true if lead was created, false if validation failed or error occurred
  */
 export async function sendLeadToGetTimber(leadData: {
@@ -17,6 +17,7 @@ export async function sendLeadToGetTimber(leadData: {
   businessType?: string;
   urgency?: string;
   leadSource?: string;
+  formPage?: string;
   [key: string]: any;
 }): Promise<{ success: boolean; leadCreated: boolean; leadId?: string; errors?: string[] }> {
   try {
@@ -39,9 +40,10 @@ export async function sendLeadToGetTimber(leadData: {
       urgency: leadData.urgency || "Not specified",
       leadSource: leadData.leadSource || "AZ Air Conditioning Website",
       preferredContactMethod: "Email",
+      formPage: leadData.formPage || "/contact",
     };
 
-    const webhookResponse = await fetch("https://gettimber.ai/api/webhooks/vancouverflood-lead", {
+    const webhookResponse = await fetch("https://gettimber.ai/api/webhooks/forms/az-hvac", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -50,23 +52,24 @@ export async function sendLeadToGetTimber(leadData: {
     });
 
     const webhookResult = await webhookResponse.json();
-    
-    if (webhookResult.success && webhookResult.leadCreated) {
+
+    if (webhookResult.success && webhookResult.leadId) {
       console.log("✅ Lead successfully added to Get Timber:", webhookResult.leadId);
       return {
         success: true,
         leadCreated: true,
         leadId: webhookResult.leadId,
       };
-    } else if (webhookResult.success === false) {
-      console.log("⚠️ Lead validation failed (gibberish detected) - not added to Get Timber:", webhookResult.errors);
+    }
+    if (webhookResult.error) {
+      console.warn("⚠️ Lead not added to Get Timber:", webhookResult.error);
       return {
         success: false,
         leadCreated: false,
-        errors: webhookResult.errors,
+        errors: [webhookResult.error],
       };
     }
-    
+
     return {
       success: false,
       leadCreated: false,

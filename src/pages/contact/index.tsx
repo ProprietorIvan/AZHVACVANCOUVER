@@ -1,6 +1,9 @@
 import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
 import { Phone, Mail, Clock, MapPin, Send, Check, ArrowRight } from "lucide-react";
+import { generateWebPageSchema } from "@/utils/seo";
+
+const SITE_URL = "https://azhvac.ca";
 import { useState } from "react";
 import { sendLeadToGetTimber } from "@/utils/sendLeadToGetTimber";
 import Head from "next/head";
@@ -44,6 +47,7 @@ const ContactUs = () => {
         message: formData.message,
         serviceType: "HVAC Inquiry",
         leadSource: "AZ Air Conditioning Website - Contact Form",
+        formPage: "/contact",
       });
       if (leadResult.success && leadResult.leadCreated) leadSent = true;
     } catch (error) {
@@ -100,7 +104,21 @@ const ContactUs = () => {
       <Head>
         <title>Contact Us | AZ Air Conditioning and Heating | Vancouver HVAC</title>
         <meta name="description" content="Get in touch with Vancouver's trusted HVAC contractor. Free estimates, 2-hour response. Call (778) 770-5721 or send a message." />
-        <link rel="canonical" href="https://azhvac.ca/contact" />
+        <meta name="keywords" content="contact az hvac, hvac vancouver contact, hvac quote vancouver, free hvac estimate vancouver" />
+        <link rel="canonical" href={`${SITE_URL}/contact`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${SITE_URL}/contact`} />
+        <meta property="og:title" content="Contact Us | AZ Air Conditioning and Heating | Vancouver HVAC" />
+        <meta property="og:description" content="Get in touch with Vancouver's trusted HVAC contractor. Free estimates, 2-hour response. Call (778) 770-5721 or send a message." />
+        <meta property="og:image" content={`${SITE_URL}/photos/homepage/slider.png`} />
+        <meta property="og:site_name" content="AZ Air Conditioning and Heating" />
+        <meta property="og:locale" content="en_CA" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content={`${SITE_URL}/contact`} />
+        <meta name="twitter:title" content="Contact Us | AZ Air Conditioning and Heating | Vancouver HVAC" />
+        <meta name="twitter:description" content="Get in touch with Vancouver's trusted HVAC contractor. Free estimates, 2-hour response." />
+        <meta name="twitter:image" content={`${SITE_URL}/photos/homepage/slider.png`} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(generateWebPageSchema("Contact Us", `${SITE_URL}/contact`, "Get in touch with Vancouver's trusted HVAC contractor. Free estimates, 2-hour response. Call (778) 770-5721 or send a message.")) }} />
       </Head>
       <div className="min-h-screen bg-white">
         <Navigation />
