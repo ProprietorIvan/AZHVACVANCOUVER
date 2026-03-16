@@ -14,11 +14,11 @@
     <image:image>
       <image:loc>https://azhvac.ca/photos/homepage/slider.png</image:loc>
       <image:title>Vancouver HVAC Services - Year-Round Comfort</image:title>
-      <image:caption>Professional HVAC services in Vancouver</image:caption>
+      <image:caption>Professional HVAC services in Vancouver - AZ Air Conditioning and Heating</image:caption>
     </image:image>
   </url>
 
-  <!-- AC Repair & Installation Landing -->
+  <!-- AC Repair & Installation -->
   <url>
     <loc>https://azhvac.ca/hvac</loc>
     <lastmod>2025-03-05</lastmod>
@@ -26,80 +26,138 @@
     <priority>0.95</priority>
     <image:image>
       <image:loc>https://azhvac.ca/photos/homepage/aircondtioning.png</image:loc>
-      <image:title>Vancouver HVAC Services - AC Repair &amp; Installation</image:title>
+      <image:title>AC Repair &amp; Installation Vancouver</image:title>
       <image:caption>Professional AC repair and installation services in Vancouver</image:caption>
     </image:image>
   </url>
 
-  <!-- Main Service Pages -->
-  <url>
-    <loc>https://azhvac.ca/ductless-mini-split-vancouver</loc>
-    <lastmod>2025-03-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://azhvac.ca/boiler-service-vancouver</loc>
-    <lastmod>2025-03-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://azhvac.ca/duct-cleaning-vancouver</loc>
-    <lastmod>2025-03-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://azhvac.ca/commercial-hvac-vancouver</loc>
-    <lastmod>2025-03-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://azhvac.ca/hvac-maintenance-vancouver</loc>
-    <lastmod>2025-03-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
+  <!-- Service Landing Pages -->
   <url>
     <loc>https://azhvac.ca/furnace-repair-vancouver</loc>
     <lastmod>2025-03-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://azhvac.ca/photos/homepage/heating.png</image:loc>
+      <image:title>Furnace Repair Vancouver</image:title>
+      <image:caption>Furnace repair and installation in Vancouver</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://azhvac.ca/heat-pump-vancouver</loc>
     <lastmod>2025-03-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://azhvac.ca/photos/homepage/boiler.png</image:loc>
+      <image:title>Heat Pump Vancouver</image:title>
+      <image:caption>Heat pump installation and service in Vancouver</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://azhvac.ca/ductless-mini-split-vancouver</loc>
+    <lastmod>2025-03-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://azhvac.ca/photos/homepage/Duct-lessminisplit.png</image:loc>
+      <image:title>Ductless Mini-Split Vancouver</image:title>
+      <image:caption>Ductless mini-split installation in Vancouver</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://azhvac.ca/boiler-service-vancouver</loc>
+    <lastmod>2025-03-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://azhvac.ca/photos/homepage/boilerservice.png</image:loc>
+      <image:title>Boiler Service Vancouver</image:title>
+      <image:caption>Boiler repair and installation in Vancouver</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://azhvac.ca/duct-cleaning-vancouver</loc>
+    <lastmod>2025-03-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://azhvac.ca/photos/homepage/ductcleaning.png</image:loc>
+      <image:title>Duct Cleaning Vancouver</image:title>
+      <image:caption>Professional duct cleaning in Vancouver</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://azhvac.ca/commercial-hvac-vancouver</loc>
+    <lastmod>2025-03-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://azhvac.ca/photos/homepage/commericial.jpg</image:loc>
+      <image:title>Commercial HVAC Vancouver</image:title>
+      <image:caption>Commercial HVAC services in Vancouver</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://azhvac.ca/hvac-maintenance-vancouver</loc>
+    <lastmod>2025-03-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://azhvac.ca/photos/homepage/hvacmaintance.png</image:loc>
+      <image:title>HVAC Maintenance Vancouver</image:title>
+      <image:caption>HVAC maintenance plans and tune-ups in Vancouver</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://azhvac.ca/emergency-hvac-vancouver</loc>
     <lastmod>2025-03-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://azhvac.ca/photos/homepage/24/7-response.png</image:loc>
+      <image:title>24/7 Emergency HVAC Vancouver</image:title>
+      <image:caption>24/7 emergency HVAC service in Vancouver</image:caption>
+    </image:image>
   </url>
-  <!-- Additional Pages -->
+
+  <!-- Services Hub -->
   <url>
     <loc>https://azhvac.ca/services</loc>
     <lastmod>2025-03-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://azhvac.ca/photos/homepage/aircondtioning.png</image:loc>
+      <image:title>HVAC Services Vancouver</image:title>
+      <image:caption>All HVAC services in Vancouver</image:caption>
+    </image:image>
   </url>
 
+  <!-- Contact -->
   <url>
     <loc>https://azhvac.ca/contact</loc>
     <lastmod>2025-03-05</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://azhvac.ca/photos/homepage/slider.png</image:loc>
+      <image:title>Contact AZ HVAC Vancouver</image:title>
+      <image:caption>Contact AZ Air Conditioning and Heating</image:caption>
+    </image:image>
   </url>
 
+  <!-- Why Choose Us -->
   <url>
     <loc>https://azhvac.ca/why-chose-us</loc>
     <lastmod>2025-03-05</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://azhvac.ca/photos/homepage/heating.png</image:loc>
+      <image:title>Why Choose AZ HVAC Vancouver</image:title>
+      <image:caption>Why Vancouver trusts AZ Air Conditioning and Heating</image:caption>
+    </image:image>
   </url>
 
   <!-- Legal Pages -->
@@ -109,7 +167,6 @@
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
-
   <url>
     <loc>https://azhvac.ca/terms</loc>
     <lastmod>2025-03-05</lastmod>

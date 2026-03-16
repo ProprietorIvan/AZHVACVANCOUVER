@@ -2,6 +2,9 @@ import React from "react";
 import Head from "next/head";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { generateWebPageSchema } from "@/utils/seo";
+
+const SITE_URL = "https://azhvac.ca";
 
 const PrivacyPolicy = () => {
   const policySections = [
@@ -60,6 +63,20 @@ const PrivacyPolicy = () => {
       <Head>
         <title>Privacy Policy | AZ Air Conditioning and Heating</title>
         <meta name="description" content="Privacy policy for AZ Air Conditioning and Heating. How we collect, use, and protect your personal information for HVAC services in Vancouver." />
+        <meta name="keywords" content="privacy policy, az hvac privacy, hvac vancouver privacy" />
+        <link rel="canonical" href={`${SITE_URL}/privacy-policy`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${SITE_URL}/privacy-policy`} />
+        <meta property="og:title" content="Privacy Policy | AZ Air Conditioning and Heating" />
+        <meta property="og:description" content="Privacy policy for AZ Air Conditioning and Heating. How we collect, use, and protect your personal information for HVAC services in Vancouver." />
+        <meta property="og:image" content={`${SITE_URL}/logo.png`} />
+        <meta property="og:site_name" content="AZ Air Conditioning and Heating" />
+        <meta property="og:locale" content="en_CA" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:url" content={`${SITE_URL}/privacy-policy`} />
+        <meta name="twitter:title" content="Privacy Policy | AZ Air Conditioning and Heating" />
+        <meta name="twitter:description" content="Privacy policy for AZ Air Conditioning and Heating. How we collect, use, and protect your personal information." />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(generateWebPageSchema("Privacy Policy", `${SITE_URL}/privacy-policy`, "Privacy policy for AZ Air Conditioning and Heating. How we collect, use, and protect your personal information for HVAC services in Vancouver.")) }} />
       </Head>
 
       <div className="min-h-screen bg-white">

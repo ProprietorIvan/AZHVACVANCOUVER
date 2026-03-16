@@ -3,6 +3,9 @@ import RelatedServices from "@/components/RelatedServices";
 import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
 import Testemonials from "@/components/Testemonials";
+import { generateWebPageSchema } from "@/utils/seo";
+
+const SITE_URL = "https://azhvac.ca";
 import {
   Clock,
   DollarSign,
@@ -72,7 +75,21 @@ const WhyChooseUs = () => {
       <Head>
         <title>Why Choose Us | AZ Air Conditioning and Heating | Vancouver HVAC</title>
         <meta name="description" content="Why Vancouver homeowners trust AZ Air Conditioning and Heating: 24/7 emergency service, transparent pricing, licensed technicians, 100+ 5-star reviews." />
-        <link rel="canonical" href="https://azhvac.ca/why-chose-us" />
+        <meta name="keywords" content="why choose az hvac, hvac contractor vancouver, trusted hvac vancouver, licensed hvac vancouver, 24/7 hvac vancouver" />
+        <link rel="canonical" href={`${SITE_URL}/why-chose-us`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${SITE_URL}/why-chose-us`} />
+        <meta property="og:title" content="Why Choose Us | AZ Air Conditioning and Heating | Vancouver HVAC" />
+        <meta property="og:description" content="Why Vancouver homeowners trust AZ Air Conditioning and Heating: 24/7 emergency service, transparent pricing, licensed technicians, 100+ 5-star reviews." />
+        <meta property="og:image" content={`${SITE_URL}/photos/homepage/heating.png`} />
+        <meta property="og:site_name" content="AZ Air Conditioning and Heating" />
+        <meta property="og:locale" content="en_CA" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content={`${SITE_URL}/why-chose-us`} />
+        <meta name="twitter:title" content="Why Choose Us | AZ Air Conditioning and Heating | Vancouver HVAC" />
+        <meta name="twitter:description" content="Why Vancouver trusts AZ HVAC: 24/7 emergency, transparent pricing, licensed techs, 100+ 5-star reviews." />
+        <meta name="twitter:image" content={`${SITE_URL}/photos/homepage/heating.png`} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(generateWebPageSchema("Why Choose Us", `${SITE_URL}/why-chose-us`, "Why Vancouver homeowners trust AZ Air Conditioning and Heating: 24/7 emergency service, transparent pricing, licensed technicians, 100+ 5-star reviews.")) }} />
       </Head>
       <div className="min-h-screen bg-white">
         <Navigation />

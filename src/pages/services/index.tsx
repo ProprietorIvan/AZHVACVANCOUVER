@@ -3,6 +3,9 @@ import Image from "next/image";
 import Head from "next/head";
 import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer";
+import { generateWebPageSchema } from "@/utils/seo";
+
+const SITE_URL = "https://azhvac.ca";
 
 interface Service {
   title: string;
@@ -87,6 +90,21 @@ const Services = () => {
           name="description"
           content="Professional HVAC services in Vancouver: AC installation, furnace repair, heat pump services, 24/7 emergency service. 100+ 5-star reviews."
         />
+        <meta name="keywords" content="hvac services vancouver, ac installation vancouver, furnace repair vancouver, heat pump vancouver, ductless mini-split, boiler service vancouver, duct cleaning, commercial hvac vancouver" />
+        <link rel="canonical" href={`${SITE_URL}/services`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${SITE_URL}/services`} />
+        <meta property="og:title" content="HVAC Services Vancouver | AZ Air Conditioning and Heating" />
+        <meta property="og:description" content="Professional HVAC services in Vancouver: AC installation, furnace repair, heat pump services. 24/7 emergency. 100+ 5-star reviews." />
+        <meta property="og:image" content={`${SITE_URL}/photos/homepage/aircondtioning.png`} />
+        <meta property="og:site_name" content="AZ Air Conditioning and Heating" />
+        <meta property="og:locale" content="en_CA" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content={`${SITE_URL}/services`} />
+        <meta name="twitter:title" content="HVAC Services Vancouver | AZ Air Conditioning and Heating" />
+        <meta name="twitter:description" content="Professional HVAC services in Vancouver. AC, furnace, heat pump, ductless, boiler, duct cleaning. 24/7 emergency." />
+        <meta name="twitter:image" content={`${SITE_URL}/photos/homepage/aircondtioning.png`} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(generateWebPageSchema("HVAC Services Vancouver", `${SITE_URL}/services`, "Professional HVAC services in Vancouver: AC installation, furnace repair, heat pump services, ductless mini-splits, boiler service, duct cleaning, commercial HVAC. 24/7 emergency service. 100+ 5-star reviews.")) }} />
       </Head>
 
       <Navigation />

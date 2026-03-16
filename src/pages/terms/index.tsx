@@ -2,6 +2,9 @@ import React from "react";
 import Head from "next/head";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { generateWebPageSchema } from "@/utils/seo";
+
+const SITE_URL = "https://azhvac.ca";
 
 const TermsAndConditions = () => {
   const sections = [
@@ -75,6 +78,20 @@ const TermsAndConditions = () => {
           name="description"
           content="Terms and conditions for HVAC services from AZ Air Conditioning and Heating. Service agreements, warranties, and professional standards."
         />
+        <meta name="keywords" content="terms and conditions, az hvac terms, hvac service agreement vancouver" />
+        <link rel="canonical" href={`${SITE_URL}/terms`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${SITE_URL}/terms`} />
+        <meta property="og:title" content="Terms & Conditions | AZ Air Conditioning and Heating" />
+        <meta property="og:description" content="Terms and conditions for HVAC services from AZ Air Conditioning and Heating. Service agreements, warranties, and professional standards." />
+        <meta property="og:image" content={`${SITE_URL}/logo.png`} />
+        <meta property="og:site_name" content="AZ Air Conditioning and Heating" />
+        <meta property="og:locale" content="en_CA" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:url" content={`${SITE_URL}/terms`} />
+        <meta name="twitter:title" content="Terms & Conditions | AZ Air Conditioning and Heating" />
+        <meta name="twitter:description" content="Terms and conditions for HVAC services from AZ Air Conditioning and Heating." />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(generateWebPageSchema("Terms & Conditions", `${SITE_URL}/terms`, "Terms and conditions for HVAC services from AZ Air Conditioning and Heating. Service agreements, warranties, and professional standards.")) }} />
       </Head>
 
       <div className="min-h-screen bg-white">
