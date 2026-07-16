@@ -47,7 +47,7 @@ const Footer = () => {
               Licensed HVAC across Greater Vancouver — heating, cooling,
               maintenance, and 24/7 emergency service for homes and businesses.
             </p>
-                        <div className="text-gray-400 text-sm space-y-2">
+            <div className="text-gray-400 text-sm space-y-2">
               <p>A proud brand of</p>
               <a
                 href={business.parentOrg.url}
