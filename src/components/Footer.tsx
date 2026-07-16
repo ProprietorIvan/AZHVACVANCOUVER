@@ -47,13 +47,15 @@ const Footer = () => {
               Licensed HVAC across Greater Vancouver — heating, cooling,
               maintenance, and 24/7 emergency service for homes and businesses.
             </p>
-            <div className="text-gray-400 text-sm space-y-2">
-              <p>A proud brand of</p>
+            <div className="text-gray-400 space-y-2.5">
+              <p className="text-[11px] uppercase tracking-[0.22em]">
+                A proud brand of
+              </p>
               <a
                 href={business.parentOrg.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-white hover:text-[#ffc527] transition-colors duration-300"
+                className="inline-flex items-center gap-2 text-lg font-semibold text-white hover:text-[#ffc527] transition-colors duration-300"
               >
                 {business.legalName} <ExternalLink size={14} />
               </a>

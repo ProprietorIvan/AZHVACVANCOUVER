@@ -309,7 +309,7 @@ const ContactUs = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               <p className="absolute bottom-4 left-4 right-4 text-white text-sm font-medium">
-                {business.brandName} — a happy Felicita Holdings Ltd. company
+                {business.brandName} — a proud brand of Felicita Holdings Ltd.
               </p>
             </div>
 

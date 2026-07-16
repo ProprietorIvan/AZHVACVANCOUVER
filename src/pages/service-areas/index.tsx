@@ -59,8 +59,7 @@ export default function ServiceAreasPage() {
               Areas We Serve
             </h1>
             <p className="text-lg text-white/80 max-w-2xl leading-relaxed mb-6">
-              AZ Air Conditioning and Heating — a happy Felicita Holdings Ltd.
-              company — provides licensed HVAC service across the GVA within
+              AZ Air Conditioning and Heating — a proud brand of Felicita Holdings Ltd. — provides licensed HVAC service across the GVA within
               ~50 km of downtown Vancouver.
             </p>
             <p className="text-white/60 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
