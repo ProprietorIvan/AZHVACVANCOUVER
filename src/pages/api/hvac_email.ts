@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import nodemailer from "nodemailer";
 import { buildEmailHtml } from "@/utils/emailTemplate";
 import { forwardToTimber } from "@/utils/forwardToTimber";
+import { sendConfirmationEmail } from "@/utils/sendConfirmationEmail";
 
 const transporter = nodemailer.createTransport({
     service: "gmail",
@@ -65,6 +66,12 @@ export default async function handler(
 
             await transporter.sendMail(mailOptions);
             console.log("✅ Email sent successfully to:", to);
+
+            await sendConfirmationEmail(transporter, {
+                name,
+                email,
+                serviceType: serviceType || hvacSystem || facilityType || "HVAC Services",
+            });
 
             await forwardToTimber({
                 name,
