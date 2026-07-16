@@ -1,6 +1,7 @@
 import { ChevronRight, Mail, Phone, Copy, Check } from "lucide-react";
 import { useState } from "react";
 import { trackPhoneClick, trackPhoneCopied } from "@/utils/analytics";
+import { business } from "@/data/business";
 
 const Contact = () => {
   const [copiedPhone, setCopiedPhone] = useState(false);
@@ -33,7 +34,7 @@ const Contact = () => {
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 md:gap-8 text-base sm:text-lg px-4">
           <a
-            href="tel:+17787705721"
+            href={`tel:${business.phone.tel}`}
             onClick={() => trackPhoneClick("contact_section", "hvac")}
             className={`flex items-center justify-center px-6 sm:px-8 py-4 rounded-full transition-all duration-200 group ${
               copiedPhone
@@ -46,14 +47,14 @@ const Contact = () => {
             ) : (
               <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
             )}
-            <span>{copiedPhone ? "Copied!" : "(778) 770-5721"}</span>
+            <span>{copiedPhone ? "Copied!" : business.phone.display}</span>
             {!copiedPhone && (
               <Copy className="w-4 h-4 sm:w-5 sm:h-5 ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
             )}
           </a>
 
           <button
-            onClick={() => copyToClipboard("office@azhvac.ca", false)}
+            onClick={() => copyToClipboard(business.email, false)}
             className={`flex items-center justify-center px-6 sm:px-8 py-4 rounded-full transition-all duration-200 group ${
               copiedEmail
                 ? "bg-green-600 text-white scale-95"
@@ -66,7 +67,7 @@ const Contact = () => {
               <Mail className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
             )}
             <span className="hidden sm:inline">
-              {copiedEmail ? "Copied!" : "office@azhvac.ca"}
+              {copiedEmail ? "Copied!" : business.email}
             </span>
             <span className="sm:hidden">
               {copiedEmail ? "Copied!" : "Email Us"}

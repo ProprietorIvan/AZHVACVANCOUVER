@@ -1,5 +1,6 @@
 import React from "react";
 import { Shield, Award, CheckCircle2, Clock } from "lucide-react";
+import { business } from "@/data/business";
 
 interface TrustBadgesProps {
   showCertifications?: boolean;
@@ -22,7 +23,7 @@ const TrustBadges: React.FC<TrustBadgesProps> = ({
     },
     {
       icon: <Award className="w-6 h-6" />,
-      text: "500+ Projects Completed",
+      text: `${business.projectsCompleted} Projects Completed`,
       highlight: false,
     },
     {

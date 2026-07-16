@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, Phone, Mail } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { business } from "@/data/business";
 
 interface NavigationProps {
   currentPage?: string;
@@ -75,9 +76,9 @@ const Navigation = ({
   const [isScrolled, setIsScrolled] = useState(false);
   const isHomepage = router.pathname === "/" || router.pathname === "";
 
-  const phoneNumber = "(778) 770-5721";
-  const phoneNumberClean = "7787705721";
-  const email = "office@azhvac.ca";
+  const phoneNumber = business.phone.display;
+  const phoneNumberClean = business.phone.tel.replace(/\D/g, "").replace(/^1/, "");
+  const email = business.email;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -91,14 +92,16 @@ const Navigation = ({
   const navLinks = isHomepage
     ? [
         { text: "Services", url: "/services" },
-        { text: "HVAC", url: "/hvac" },
+        { text: "Areas", url: "/service-areas" },
+        { text: "Guides", url: "/guides" },
         { text: "Why Choose Us", url: "/why-chose-us" },
         { text: "Contact", url: "/contact" },
       ]
     : [
         { text: "Home", url: "/" },
         { text: "Services", url: "/services" },
-        { text: "HVAC", url: "/hvac" },
+        { text: "Areas", url: "/service-areas" },
+        { text: "Guides", url: "/guides" },
         { text: "Why Choose Us", url: "/why-chose-us" },
         { text: "Contact", url: "/contact" },
       ];

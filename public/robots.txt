@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 
-# Sitemap
+Disallow: /api/
+
 Sitemap: https://azhvac.ca/sitemap.xml

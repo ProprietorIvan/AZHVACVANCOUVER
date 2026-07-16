@@ -1,11 +1,16 @@
 import React from "react";
 import Image from "next/image";
-import Head from "next/head";
+import Link from "next/link";
 import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer";
-import { generateWebPageSchema } from "@/utils/seo";
-
-const SITE_URL = "https://azhvac.ca";
+import SEOHead from "@/components/SEOHead";
+import { business } from "@/data/business";
+import {
+  generateOrganizationSchema,
+  generateWebSiteSchema,
+  generateWebPageSchema,
+  generateBreadcrumbSchema,
+} from "@/utils/seo";
 
 interface Service {
   title: string;
@@ -82,30 +87,27 @@ const Services = () => {
     window.open(link, "_current");
   };
 
+  const pageUrl = `${business.siteUrl}/services`;
+  const description =
+    "Professional HVAC services in Vancouver: AC installation, furnace repair, heat pump services, 24/7 emergency service. 100+ 5-star reviews.";
+
   return (
     <div className="min-h-screen bg-white">
-      <Head>
-        <title>HVAC Services in Vancouver | AZ Air Conditioning and Heating</title>
-        <meta
-          name="description"
-          content="Professional HVAC services in Vancouver: AC installation, furnace repair, heat pump services, 24/7 emergency service. 100+ 5-star reviews."
-        />
-        <meta name="keywords" content="hvac services vancouver, ac installation vancouver, furnace repair vancouver, heat pump vancouver, ductless mini-split, boiler service vancouver, duct cleaning, commercial hvac vancouver" />
-        <link rel="canonical" href={`${SITE_URL}/services`} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={`${SITE_URL}/services`} />
-        <meta property="og:title" content="HVAC Services Vancouver | AZ Air Conditioning and Heating" />
-        <meta property="og:description" content="Professional HVAC services in Vancouver: AC installation, furnace repair, heat pump services. 24/7 emergency. 100+ 5-star reviews." />
-        <meta property="og:image" content={`${SITE_URL}/photos/homepage/aircondtioning.png`} />
-        <meta property="og:site_name" content="AZ Air Conditioning and Heating" />
-        <meta property="og:locale" content="en_CA" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:url" content={`${SITE_URL}/services`} />
-        <meta name="twitter:title" content="HVAC Services Vancouver | AZ Air Conditioning and Heating" />
-        <meta name="twitter:description" content="Professional HVAC services in Vancouver. AC, furnace, heat pump, ductless, boiler, duct cleaning. 24/7 emergency." />
-        <meta name="twitter:image" content={`${SITE_URL}/photos/homepage/aircondtioning.png`} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(generateWebPageSchema("HVAC Services Vancouver", `${SITE_URL}/services`, "Professional HVAC services in Vancouver: AC installation, furnace repair, heat pump services, ductless mini-splits, boiler service, duct cleaning, commercial HVAC. 24/7 emergency service. 100+ 5-star reviews.")) }} />
-      </Head>
+      <SEOHead
+        title="HVAC Services in Vancouver | AZ Air Conditioning and Heating"
+        description={description}
+        keywords="hvac services vancouver, ac installation vancouver, furnace repair vancouver, heat pump vancouver, ductless mini-split, boiler service vancouver, duct cleaning, commercial hvac vancouver"
+        canonicalUrl={pageUrl}
+        schemaGraph={[
+          generateOrganizationSchema(),
+          generateWebSiteSchema(),
+          generateWebPageSchema("HVAC Services Vancouver", pageUrl, description),
+          generateBreadcrumbSchema([
+            { name: "Home", url: business.siteUrl },
+            { name: "Services", url: pageUrl },
+          ]),
+        ]}
+      />
 
       <Navigation />
 
@@ -114,9 +116,23 @@ const Services = () => {
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             Vancouver&apos;s Premier HVAC Services
           </h1>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg text-gray-600 mb-6">
             Heating, cooling, and air quality solutions for your home or business.
           </p>
+          <div className="flex flex-wrap justify-center gap-4 text-sm font-semibold">
+            <Link
+              href="/service-areas"
+              className="text-gray-900 underline underline-offset-4 decoration-[#ffc527]"
+            >
+              Service areas
+            </Link>
+            <Link
+              href="/guides"
+              className="text-gray-900 underline underline-offset-4 decoration-[#ffc527]"
+            >
+              HVAC guides
+            </Link>
+          </div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4">

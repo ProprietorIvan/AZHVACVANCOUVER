@@ -15,6 +15,8 @@ interface HeroProps {
   showQuote?: boolean;
 }
 
+import { business } from "@/data/business";
+
 const Hero = ({ examples, context, title, subtitle, description, quoteTitle = '', quoteSubtitle = '', quoteDescription = '',showQuote=true }: HeroProps) => (
   <>
     <section className="relative px-4 sm:px-6 pt-20 sm:pt-32 pb-16 sm:pb-24 text-center min-h-[100svh] flex items-center justify-center overflow-hidden">
@@ -68,11 +70,11 @@ const Hero = ({ examples, context, title, subtitle, description, quoteTitle = ''
           </section>
           <section className="flex justify-between my-[70px]">
             <div className="text-white">
-              <h2 className='text-4xl font-bold mb-2'>1,200+</h2>
+              <h2 className='text-4xl font-bold mb-2'>{business.projectsCompleted}</h2>
               <p className="lazyloaded">Projects completed</p>
             </div>
             <div className="text-white">
-              <h2 className='text-4xl font-bold  mb-2'>4.9</h2>
+              <h2 className='text-4xl font-bold  mb-2'>{business.aggregateRating.ratingValue}</h2>
               <p>Customer rating</p>
             </div>
             <div className="text-white">

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Head from "next/head";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import Contact from "@/components/Contact";
@@ -10,13 +9,10 @@ import CTAButton from "@/components/CTAButton";
 import RelatedServices from "@/components/RelatedServices";
 import { getGMBProfile } from "@/data/gmb-profiles";
 import ServiceTestimonials from "@/components/ServiceTestimonials";
-import {
-  generateLocalBusinessSchema,
-  generateBreadcrumbSchema,
-  generateServiceSchema,
-  generateFAQPageSchema,
-  generateWebPageSchema,
-} from "@/utils/seo";
+import ServicePageSEO from "@/components/ServicePageSEO";
+import ServiceFAQSection from "@/components/ServiceFAQSection";
+import { business } from "@/data/business";
+import { getServiceFAQs } from "@/data/serviceFAQs";
 
 export interface ServiceLandingConfig {
   slug: string;
@@ -104,27 +100,16 @@ const ServiceLandingPage = ({ config }: { config: ServiceLandingConfig }) => {
       }
     } catch (err) {
       console.error("Form submit error:", err);
-      alert("There was an error submitting your request. Please try again or call (778) 770-5721.");
+      alert(`There was an error submitting your request. Please try again or call ${business.phone.display}.`);
     }
   };
 
   const handleCall = () => {
-    window.location.href = "tel:+17787705721";
+    window.location.href = `tel:${business.phone.tel}`;
   };
 
   const gmbProfile = getGMBProfile("hvac");
-  const localBusinessSchema = gmbProfile ? generateLocalBusinessSchema(gmbProfile) : null;
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Home", url: "https://azhvac.ca/" },
-    { name: config.breadcrumbName, url: `https://azhvac.ca/${config.slug}` },
-  ]);
-  const serviceSchema = generateServiceSchema(
-    config.serviceType,
-    config.metaDescription,
-    "Vancouver"
-  );
-  const faqSchema = generateFAQPageSchema(config.faqs, `https://azhvac.ca/${config.slug}`);
-  const webPageSchema = generateWebPageSchema(config.heroTitle, `https://azhvac.ca/${config.slug}`, config.metaDescription);
+  const faqs = getServiceFAQs(config.slug);
 
   const defaultTestimonials = [
     { name: "Chris Anderson", role: "Vancouver Homeowner", text: "Excellent service! Professional and knowledgeable. Highly recommend." },
@@ -135,12 +120,12 @@ const ServiceLandingPage = ({ config }: { config: ServiceLandingConfig }) => {
 
   const valueProps = config.valueProps ?? [
     { title: "2-Hour Emergency Response", description: "Our Vancouver-based team arrives within 2 hours for urgent HVAC failures. We prioritize emergencies and get your heating or cooling restored quickly." },
-    { title: "Transparent Pricing", description: "Upfront quotes with no hidden fees. We explain every cost before starting work. No upselling—we recommend only what your system needs." },
-    { title: "100% Satisfaction Guarantee", description: "Vancouver's trusted HVAC service with 100+ 5-star reviews. We stand behind every repair and installation." },
+    { title: "Custom Written Quotes", description: "Every job is different. You receive a clear written estimate before work begins — no published rates, no surprises." },
+    { title: "100% Satisfaction Guarantee", description: `Vancouver's trusted HVAC service with ${business.aggregateRating.reviewCount}+ 5-star reviews. We stand behind every repair and installation.` },
   ];
 
   const stats = config.stats ?? [
-    { value: "750+", label: "VANCOUVER PROJECTS COMPLETED" },
+    { value: business.projectsCompleted, label: "VANCOUVER PROJECTS COMPLETED" },
     { value: "2hr", label: "EMERGENCY RESPONSE TIME" },
     { value: "24/7", label: "LOWER MAINLAND SERVICE" },
     { value: "100%", label: "SATISFACTION GUARANTEE" },
@@ -148,34 +133,19 @@ const ServiceLandingPage = ({ config }: { config: ServiceLandingConfig }) => {
 
   return (
     <>
-      <Head>
-        <title>{config.metaTitle}</title>
-        <meta name="description" content={config.metaDescription} />
-        <meta name="keywords" content={`${config.serviceType.toLowerCase()} vancouver, ${config.serviceType} vancouver bc, hvac vancouver`} />
-        <link rel="canonical" href={`https://azhvac.ca/${config.slug}`} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={`https://azhvac.ca/${config.slug}`} />
-        <meta property="og:title" content={config.metaTitle} />
-        <meta property="og:description" content={config.metaDescription} />
-        <meta property="og:image" content={`https://azhvac.ca${config.heroImage || "/photos/homepage/aircondtioning.png"}`} />
-        <meta property="og:site_name" content="AZ Air Conditioning and Heating" />
-        <meta property="og:locale" content="en_CA" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:url" content={`https://azhvac.ca/${config.slug}`} />
-        <meta name="twitter:title" content={config.metaTitle} />
-        <meta name="twitter:description" content={config.metaDescription} />
-        <meta name="twitter:image" content={`https://azhvac.ca${config.heroImage || "/photos/homepage/aircondtioning.png"}`} />
-        {localBusinessSchema && (
-          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
-        )}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }} />
-      </Head>
+      <ServicePageSEO
+        pageKey={config.slug}
+        canonicalPath={`/${config.slug}`}
+        title={config.metaTitle}
+        description={config.metaDescription}
+        keywords={`${config.serviceType.toLowerCase()} vancouver, ${config.serviceType} vancouver bc, hvac vancouver`}
+        serviceName={config.serviceType}
+        serviceDescription={config.metaDescription}
+        ogImage={`${business.siteUrl}${config.heroImage || "/photos/homepage/aircondtioning.png"}`}
+      />
 
       <div className="min-h-screen bg-white">
-        <StickyCTA phoneNumber="+17787705721" ctaText="Call Now" page={config.slug} />
+        <StickyCTA phoneNumber={business.phone.tel} ctaText="Call Now" page={config.slug} />
         <Navigation transparent />
 
         {/* Hero */}
@@ -196,10 +166,10 @@ const ServiceLandingPage = ({ config }: { config: ServiceLandingConfig }) => {
                       <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400" />
                     ))}
                   </div>
-                  <span className="text-lg font-medium text-gray-700">4.9/5 Rating (100+ Reviews)</span>
+                  <span className="text-lg font-medium text-gray-700">{business.aggregateRating.ratingValue}/5 Rating ({business.aggregateRating.reviewCount}+ Reviews)</span>
                 </div>
                 <p className="text-gray-600 mb-8">Trusted by Vancouver homeowners & businesses</p>
-                <CTAButton text="Get Free Quote - Call (778) 770-5721" onClick={handleCall} location="hero" page={config.slug} showPhoneIcon={true} />
+                <CTAButton text={`Get Free Quote - Call ${business.phone.display}`} onClick={handleCall} location="hero" page={config.slug} showPhoneIcon={true} />
               </div>
               <div className="w-full md:w-1/2 relative h-[400px] md:h-[500px]">
                 <Image src={config.heroImage || "/photos/homepage/aircondtioning.png"} alt={config.serviceType} fill className="object-cover rounded-xl shadow-xl" priority />
@@ -232,7 +202,7 @@ const ServiceLandingPage = ({ config }: { config: ServiceLandingConfig }) => {
             <div className="max-w-7xl mx-auto px-4 text-center">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Vancouver&apos;s 24/7 Emergency {config.serviceType} Team</h2>
               <p className="text-xl text-gray-300 mb-6">2-Hour Response Time • All Vancouver Areas</p>
-              <CTAButton text="Call Now - (778) 770-5721" onClick={handleCall} location="banner" page={config.slug} showPhoneIcon={true} variant="secondary" />
+              <CTAButton text={`Call Now - ${business.phone.display}`} onClick={handleCall} location="banner" page={config.slug} showPhoneIcon={true} variant="secondary" />
             </div>
           </section>
         )}
@@ -394,26 +364,10 @@ const ServiceLandingPage = ({ config }: { config: ServiceLandingConfig }) => {
           <RelatedServices currentPage={config.slug} />
         </div>
 
-        {/* FAQ */}
-        <section className="py-20 bg-white">
-          <div className="max-w-4xl mx-auto px-4">
-            <h2 className="text-4xl font-bold text-center mb-4">Frequently Asked Questions</h2>
-            <p className="text-gray-600 text-center mb-12">Learn about our Vancouver {config.serviceType.toLowerCase()} services</p>
-            <div className="space-y-6">
-              {config.faqs.map((faq, i) => (
-                <details key={i} className="group bg-gray-50 rounded-xl p-6">
-                  <summary className="font-semibold text-gray-900 cursor-pointer list-none flex justify-between items-center">
-                    {faq.question}
-                    <span className="text-gray-500 group-open:rotate-90 transition-transform inline-block">
-                      <ArrowRight className="w-5 h-5" />
-                    </span>
-                  </summary>
-                  <p className="mt-4 text-gray-600 leading-relaxed">{faq.answer}</p>
-                </details>
-              ))}
-            </div>
-          </div>
-        </section>
+        <ServiceFAQSection
+          faqs={faqs}
+          subtitle={`Learn about our Vancouver ${config.serviceType.toLowerCase()} services`}
+        />
 
         {/* Final CTA */}
         <section className="py-16 bg-gray-900 text-white">
@@ -421,9 +375,9 @@ const ServiceLandingPage = ({ config }: { config: ServiceLandingConfig }) => {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Vancouver {config.serviceType}? We&apos;re Here 24/7</h2>
             <p className="text-xl text-gray-300 mb-8">Vancouver&apos;s trusted name in HVAC. Rapid response, lasting solutions.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="tel:+17787705721" className="inline-flex items-center justify-center gap-2 bg-white text-gray-900 px-8 py-4 rounded-lg font-bold hover:bg-yellow-400 transition-colors">
+              <a href={`tel:${business.phone.tel}`} className="inline-flex items-center justify-center gap-2 bg-white text-gray-900 px-8 py-4 rounded-lg font-bold hover:bg-yellow-400 transition-colors">
                 <Phone className="w-5 h-5" />
-                (778) 770-5721
+                {business.phone.display}
               </a>
               <a href="#contactform" className="inline-flex items-center justify-center gap-2 border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-gray-900 transition-colors">
                 Request Service

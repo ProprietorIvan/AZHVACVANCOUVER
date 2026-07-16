@@ -8,14 +8,19 @@ import RelatedServices from "@/components/RelatedServices";
 import StepsSection from "@/components/StepsSection";
 import Testemonials from "@/components/Testemonials";
 import DomainRedirectHandler from "@/components/DomainRedirectHandler";
+import SEOHead from "@/components/SEOHead";
+import { business } from "@/data/business";
+import { homepageFAQs } from "@/data/serviceFAQs";
+import {
+  generateOrganizationSchema,
+  generateWebSiteSchema,
+  generateWebPageSchema,
+  generateFAQPageSchema,
+} from "@/utils/seo";
 import { Star, Check, ChevronDown } from "lucide-react";
 import { useRouter } from "next/router";
-import Head from "next/head";
 import Image from "next/image";
 import type { NextPage } from "next";
-
-const SITE_URL = "https://azhvac.ca";
-const BUSINESS_NAME = "AZ Air Conditioning and Heating";
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -92,158 +97,31 @@ const Home: NextPage = () => {
     { id: "commercial", name: "Commercial HVAC", description: "Commercial & industrial HVAC" },
   ];
 
-  const businessStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "HVACContractor",
-    name: BUSINESS_NAME,
-    image: `${SITE_URL}/photos/homepage/aircondtioning.png`,
-    url: SITE_URL,
-    "@id": `${SITE_URL}/#organization`,
-    description:
-      "Vancouver's trusted HVAC contractor. Professional air conditioning, heating, and ventilation services. 100+ 5-star reviews. 24/7 emergency service.",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "922 Homer St",
-      addressLocality: "Vancouver",
-      addressRegion: "BC",
-      postalCode: "V6B 1T7",
-      addressCountry: "CA",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: "49.2766",
-      longitude: "-123.1193",
-    },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.9",
-      reviewCount: "100",
-      bestRating: "5",
-      worstRating: "1",
-    },
-    areaServed: "Vancouver Metropolitan Area",
-    priceRange: "$$",
-    openingHours: "Mo-Su 00:00-23:59",
-    telephone: "+17787705721",
-  };
+  const pageUrl = business.siteUrl;
+  const homepageDescription = `Vancouver's trusted HVAC contractor. AC installation, furnace repair, heat pump services. ${business.aggregateRating.reviewCount}+ 5-star reviews. 24/7 emergency service. Call ${business.phone.display}.`;
 
-  const localBusinessStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    name: BUSINESS_NAME,
-    image: `${SITE_URL}/photos/homepage/aircondtioning.png`,
-    priceRange: "$$",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "922 Homer St",
-      addressLocality: "Vancouver",
-      addressRegion: "BC",
-      postalCode: "V6B 1T7",
-      addressCountry: "CA",
-    },
-    telephone: "+17787705721",
-    url: SITE_URL,
-  };
-
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "How quickly can you respond to HVAC emergencies?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "We guarantee a 2-hour response time for emergency HVAC services across Vancouver and the Lower Mainland. Our technicians are available 24/7 for urgent heating and cooling failures.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Do you provide free estimates?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Yes, we provide free, no-obligation estimates for all HVAC installation, repair, and maintenance projects in Vancouver.",
-        },
-      },
-    ],
-  };
+  const schemaGraph = [
+    generateOrganizationSchema(),
+    generateWebSiteSchema(),
+    generateWebPageSchema(
+      `${business.brandName} | Vancouver HVAC Contractor`,
+      pageUrl,
+      homepageDescription
+    ),
+    generateFAQPageSchema(homepageFAQs, pageUrl),
+  ];
 
   return (
     <>
       <DomainRedirectHandler />
-      <Head>
-        <title>
-          AZ Air Conditioning and Heating | Vancouver HVAC Contractor | 100+ 5-Star Reviews
-        </title>
-        <meta
-          name="description"
-          content="Vancouver's #1 HVAC contractor. AC installation, furnace repair, heat pump services. 100+ 5-star reviews. 24/7 emergency service. Call (778) 770-5721."
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta charSet="utf-8" />
-
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={SITE_URL} />
-        <meta
-          property="og:title"
-          content={`${BUSINESS_NAME} | Vancouver HVAC Contractor`}
-        />
-        <meta
-          property="og:description"
-          content="Vancouver's trusted HVAC specialists. AC installation, furnace repair, heat pump services. 100+ 5-star reviews. 24/7 emergency service."
-        />
-        <meta
-          property="og:image"
-          content={`${SITE_URL}/photos/homepage/slider.png`}
-        />
-        <meta property="og:site_name" content={BUSINESS_NAME} />
-        <meta property="og:locale" content="en_CA" />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:url" content={SITE_URL} />
-        <meta
-          name="twitter:title"
-          content={`${BUSINESS_NAME} | Vancouver HVAC Contractor`}
-        />
-        <meta
-          name="twitter:description"
-          content="Vancouver's trusted HVAC service. AC, heating, 24/7 emergency."
-        />
-        <meta
-          name="twitter:image"
-          content={`${SITE_URL}/photos/homepage/slider.png`}
-        />
-
-        <meta
-          name="keywords"
-          content="hvac vancouver, air conditioning vancouver, furnace repair vancouver, ac installation vancouver, heat pump vancouver, hvac contractor vancouver bc"
-        />
-        <meta name="robots" content="index, follow" />
-        <meta name="author" content={BUSINESS_NAME} />
-        <meta name="geo.region" content="CA-BC" />
-        <meta name="geo.placename" content="Vancouver" />
-        <meta name="language" content="English" />
-        <link rel="canonical" href={`${SITE_URL}/`} />
-
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(businessStructuredData),
-          }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(localBusinessStructuredData),
-          }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        />
-
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <SEOHead
+        title={`${business.brandName} | Vancouver HVAC Contractor | ${business.aggregateRating.reviewCount}+ 5-Star Reviews`}
+        description={homepageDescription}
+        keywords="hvac vancouver, air conditioning vancouver, furnace repair vancouver, ac installation vancouver, heat pump vancouver, hvac contractor vancouver bc"
+        canonicalUrl={pageUrl}
+        ogImage={`${business.siteUrl}/photos/homepage/slider.png`}
+        schemaGraph={schemaGraph}
+      />
 
       <div className="min-h-screen bg-white">
         <Navigation showActions={false} />
@@ -274,7 +152,7 @@ const Home: NextPage = () => {
                 className="text-xl md:text-2xl text-white mb-8 drop-shadow-md"
                 style={{ textShadow: "1px 1px 3px rgba(0,0,0,0.5)" }}
               >
-                Vancouver&apos;s #1 HVAC contractor with 100+ 5-star reviews
+                Vancouver&apos;s #1 HVAC contractor with {business.aggregateRating.reviewCount}+ 5-star reviews
               </p>
               <div className="flex flex-wrap items-center gap-4 mb-8">
                 <button
@@ -303,7 +181,7 @@ const Home: NextPage = () => {
                   className="text-white text-lg drop-shadow-md"
                   style={{ textShadow: "1px 1px 2px rgba(0,0,0,0.5)" }}
                 >
-                  100+ 5-Star Reviews
+                  {business.aggregateRating.reviewCount}+ 5-Star Reviews
                 </span>
               </div>
             </div>
@@ -454,15 +332,15 @@ const Home: NextPage = () => {
                 Ready for Year-Round Comfort?
               </h2>
               <p className="text-gray-300 mb-12 text-xl max-w-3xl mx-auto">
-                Join 100+ satisfied Vancouver homeowners who trust AZ Air
+                Join {business.aggregateRating.reviewCount}+ satisfied Vancouver homeowners who trust AZ Air
                 Conditioning and Heating for their HVAC needs
               </p>
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
                 <a
-                  href="tel:+17787705721"
+                  href={`tel:${business.phone.tel}`}
                   className="w-full sm:w-auto bg-white text-black px-8 py-4 rounded-lg text-lg font-medium hover:bg-yellow-400 transition-colors duration-300 text-center"
                 >
-                  Call (778) 770-5721
+                  Call {business.phone.display}
                 </a>
                 <button
                   onClick={() => router.push("/services")}

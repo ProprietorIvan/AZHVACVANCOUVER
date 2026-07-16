@@ -1,164 +1,156 @@
 import React from "react";
-import Head from "next/head";
 import Link from "next/link";
-const SITE_URL = "https://azhvac.ca";
-const BUSINESS_NAME = "AZ Air Conditioning and Heating";
+import { business } from "@/data/business";
+import { generateOrganizationSchema } from "@/utils/seo";
 
 const Footer = () => {
-  const organizationStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "HVACContractor",
-    name: BUSINESS_NAME,
-    url: SITE_URL,
-    logo: `${SITE_URL}/logo.png`,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "922 Homer St",
-      addressLocality: "Vancouver",
-      addressRegion: "BC",
-      postalCode: "V6B 1T7",
-      addressCountry: "CA",
-    },
-    contactPoint: {
-      "@type": "ContactPoint",
-      telephone: "+17787705721",
-      contactType: "customer service",
-      email: "office@azhvac.ca",
-      availableLanguage: ["English"],
-      areaServed: "CA-BC",
-    },
-    parentOrganization: {
-      "@type": "Organization",
-      name: "Felicita Group",
-      url: "https://www.felicita.group",
-    },
-    openingHoursSpecification: {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday",
-      ],
-      opens: "00:00",
-      closes: "23:59",
-    },
-  };
+  const organizationStructuredData = generateOrganizationSchema();
+
+  const serviceLinks = [
+    { label: "AC Repair & Installation", href: "/hvac" },
+    { label: "Furnace Repair", href: "/furnace-repair-vancouver" },
+    { label: "Heat Pump", href: "/heat-pump-vancouver" },
+    { label: "Ductless Mini-Split", href: "/ductless-mini-split-vancouver" },
+    { label: "HVAC Maintenance", href: "/hvac-maintenance-vancouver" },
+    { label: "Emergency HVAC", href: "/emergency-hvac-vancouver" },
+    { label: "Commercial HVAC", href: "/commercial-hvac-vancouver" },
+  ];
 
   return (
-    <>
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(organizationStructuredData),
-          }}
-        />
-      </Head>
+    <div className="relative mt-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(organizationStructuredData),
+        }}
+      />
 
-      <div className="relative mt-16">
-        <footer
-          className="bg-black text-white py-12 px-6"
-          aria-label="Site Footer"
-        >
-          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-            <section aria-label="About Us">
-              <h2 className="text-lg font-semibold mb-4">
-                We are here to help
-              </h2>
-              <div
-                className="h-1 w-12 bg-orange-600 mb-4"
-                aria-hidden="true"
-              ></div>
-              <p className="text-gray-300">
-                Vancouver&apos;s trusted HVAC contractor. From AC installation to
-                furnace repair, we deliver expert heating and cooling solutions.
-                No HVAC job is too big or small—call us for a free estimate.
-              </p>
-            </section>
+      <footer
+        className="bg-black text-white py-12 px-6"
+        aria-label="Site Footer"
+      >
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <section aria-label="About Us">
+            <h2 className="text-lg font-semibold mb-4">We are here to help</h2>
+            <div className="h-1 w-12 bg-[#ffc527] mb-4" aria-hidden="true" />
+            <p className="text-gray-300 leading-relaxed">
+              AZ Air Conditioning and Heating — a happy Felicita Holdings Ltd.
+              company. Licensed HVAC across Greater Vancouver — heating,
+              cooling, and 24/7 emergency service.
+            </p>
+          </section>
 
-            <section aria-label="Opening Hours">
-              <h2 className="text-lg font-semibold mb-4">
-                OPENING <span className="text-yellow-500">HOURS</span>
-              </h2>
-              <div
-                className="h-1 w-12 bg-orange-600 mb-4"
-                aria-hidden="true"
-              ></div>
-              <p className="text-gray-300">
-                24/7
-              </p>
-            </section>
-
-            <section aria-label="Contact Information">
-              <h2 className="text-lg font-semibold mb-4">
-                CONTACT <span className="text-yellow-500">HERE</span>
-              </h2>
-              <div
-                className="h-1 w-12 bg-orange-600 mb-4"
-                aria-hidden="true"
-              ></div>
-              <address className="text-gray-300 space-y-2 not-italic">
-                <p>922 Homer St, Vancouver, BC V6B 1T7</p>
-                <p>
-                  Phone:{" "}
-                  <a
-                    href="tel:+17787705721"
+          <section aria-label="Services">
+            <h2 className="text-lg font-semibold mb-4">
+              <span className="text-[#ffc527]">SERVICES</span>
+            </h2>
+            <div className="h-1 w-12 bg-[#ffc527] mb-4" aria-hidden="true" />
+            <ul className="space-y-2 text-gray-300">
+              {serviceLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
                     className="hover:text-white transition-colors"
                   >
-                    (778) 770-5721
-                  </a>
-                </p>
-                <p>
-                  Email:{" "}
-                  <a
-                    href="mailto:office@azhvac.ca"
-                    className="hover:text-white transition-colors"
-                  >
-                    office@azhvac.ca
-                  </a>
-                </p>
-              </address>
-            </section>
-          </div>
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
 
-          <div className="max-w-7xl mx-auto mt-8 pt-8 border-t border-gray-800">
-            <div className="flex flex-col items-center text-gray-400 text-sm space-y-4">
-              <div className="text-xs tracking-wider text-gray-500">
+          <section aria-label="Locations and resources">
+            <h2 className="text-lg font-semibold mb-4">
+              <span className="text-[#ffc527]">AREAS & GUIDES</span>
+            </h2>
+            <div className="h-1 w-12 bg-[#ffc527] mb-4" aria-hidden="true" />
+            <ul className="space-y-2 text-gray-300">
+              <li>
+                <Link href="/service-areas" className="hover:text-white transition-colors">
+                  Service Areas
+                </Link>
+              </li>
+              <li>
+                <Link href="/guides" className="hover:text-white transition-colors">
+                  HVAC Guides
+                </Link>
+              </li>
+              <li>
+                <Link href="/why-chose-us" className="hover:text-white transition-colors">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-white transition-colors">
+                  Contact
+                </Link>
+              </li>
+            </ul>
+          </section>
+
+          <section aria-label="Contact Information">
+            <h2 className="text-lg font-semibold mb-4">
+              CONTACT <span className="text-[#ffc527]">HERE</span>
+            </h2>
+            <div className="h-1 w-12 bg-[#ffc527] mb-4" aria-hidden="true" />
+            <p className="text-gray-300 mb-4">Open 24 hours a day, 7 days a week</p>
+            <address className="text-gray-300 space-y-2 not-italic">
+              <p>Address: {business.address.full}</p>
+              <p>
+                Phone:{" "}
                 <a
-                  href="https://www.felicita.group"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-normal hover:text-gray-300 transition-colors"
+                  href={`tel:${business.phone.tel}`}
+                  className="hover:text-white transition-colors"
                 >
-                  Felicita Group Company
+                  {business.phone.display}
                 </a>
-              </div>
-              <div className="flex flex-col md:flex-row justify-between items-center w-full">
-                <p>© {new Date().getFullYear()} {BUSINESS_NAME}. All rights reserved.</p>
-                <div className="flex space-x-8 mt-4 md:mt-0">
-                  <Link
-                    href="/privacy-policy"
-                    className="hover:text-white transition-colors"
-                  >
-                    PRIVACY POLICY
-                  </Link>
-                  <Link
-                    href="/terms"
-                    className="hover:text-white transition-colors"
-                  >
-                    TERMS & CONDITIONS
-                  </Link>
-                </div>
+              </p>
+              <p>
+                Email:{" "}
+                <a
+                  href={`mailto:${business.email}`}
+                  className="hover:text-white transition-colors"
+                >
+                  {business.email}
+                </a>
+              </p>
+            </address>
+          </section>
+        </div>
+
+        <div className="max-w-7xl mx-auto mt-8 pt-8 border-t border-gray-800">
+          <div className="flex flex-col items-center text-gray-400 text-sm space-y-4">
+            <div className="text-xs tracking-wider text-gray-500">
+              <a
+                href={business.parentOrg.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-normal hover:text-gray-300 transition-colors"
+              >
+                Felicita Group Company
+              </a>
+            </div>
+            <div className="flex flex-col md:flex-row justify-between items-center w-full">
+              <p>© {new Date().getFullYear()}. ALL RIGHTS RESERVED</p>
+              <div className="flex space-x-8 mt-4 md:mt-0">
+                <Link
+                  href="/privacy-policy"
+                  className="hover:text-white transition-colors"
+                >
+                  PRIVACY POLICY
+                </Link>
+                <Link
+                  href="/terms"
+                  className="hover:text-white transition-colors"
+                >
+                  TERMS & CONDITIONS
+                </Link>
               </div>
             </div>
           </div>
-        </footer>
-      </div>
-    </>
+        </div>
+      </footer>
+    </div>
   );
 };
 
